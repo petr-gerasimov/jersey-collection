@@ -10,9 +10,10 @@
   input { font-size: 16px; padding: 8px; flex: 1; min-width: 160px; }
   #kits { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
   figure { margin: 0; }
-  img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; background: #eee; border-radius: 8px; }
+  img, .nophoto { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; background: #eee; border-radius: 8px; display: block; }
   figcaption { margin-top: 4px; }
-  .missing { opacity: .5; }
+  small { color: #666; }
+  .wishlist { opacity: .5; }
 </style>
 </head>
 <body>
@@ -44,22 +45,27 @@ function fill(id, values) {
 
 // shortcut: the archive's address pattern is guessed from its site, no API; switch to a kit API if it breaks
 const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+// "25/26" -> "2025-26", "99/00" -> "1999-00", "2014" stays: the archive's season format
+const fullSeason = s => s.replace(/^(\d\d)\/(\d\d)$/, (_, a, b) => (a < 30 ? '20' : '19') + a + '-' + b);
 function archiveLink(team, season) {
   const a = archive.querySelector('a');
   archive.hidden = !(team && season);
-  a.href = `https://www.footballkitarchive.com/${slug(team)}-${slug(season)}-kits/`;
+  a.href = `https://www.footballkitarchive.com/${slug(team)}-${fullSeason(season)}-kits/`;
   a.textContent = `${team} ${season} on Football Kit Archive`;
 }
 
 function render() {
   const team = norm(form.team.value), season = form.season.value.trim();
-  archiveLink(form.team.value.trim(), season);
   const found = kits.filter(k => matches(k, team, season));
+  archiveLink(found[0]?.team || form.team.value.trim(), season);
   empty.hidden = found.length > 0;
   grid.innerHTML = found.map(k => `
-    <figure class="${k.owned ? '' : 'missing'}">
-      <img src="photos/${k.photo}" alt="${k.team} ${k.season} ${k.kit}" loading="lazy">
-      <figcaption><b>${k.team}</b> ${k.season} · ${k.kit}${k.owned ? '' : ' · not in collection'}</figcaption>
+    <figure class="${k.status}">
+      ${k.photo ? `<img src="photos/${k.photo}" alt="${k.team} ${k.season || ''} ${k.kit || ''}" loading="lazy">` : '<div class="nophoto"></div>'}
+      <figcaption>
+        <b>${k.team}</b> ${k.season || ''} ${k.kit || ''}${k.status === 'yes' ? '' : ' · ' + k.status}<br>
+        <small>${[k.brand, k.size, k.comment].filter(Boolean).join(' · ')}</small>
+      </figcaption>
     </figure>`).join('');
 }
 

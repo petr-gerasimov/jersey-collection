@@ -1,3 +1,829 @@
 [
-  { "team": "Arsenal", "season": "2003/04", "kit": "home", "photo": "arsenal-2003-04-home.jpg", "owned": true }
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "25/26",
+  "kit": "third",
+  "brand": "Adidas",
+  "size": "XL"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "24/25",
+  "kit": "third",
+  "brand": "Adidas",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "23/24",
+  "kit": "home",
+  "brand": "Castore",
+  "size": "XL"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "23/24",
+  "kit": "home",
+  "brand": "Castore",
+  "size": "M",
+  "comment": "women"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "23/24",
+  "kit": "away",
+  "brand": "Castore",
+  "size": "XL"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "22/23",
+  "kit": "third",
+  "brand": "Castore",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "22/23",
+  "kit": "special",
+  "brand": "Castore",
+  "size": "XL",
+  "comment": "special with city"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "20/21",
+  "kit": "third",
+  "brand": "Puma",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "19/20",
+  "kit": "home",
+  "brand": "Puma",
+  "size": "M",
+  "comment": "Replica"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "17/18",
+  "kit": "home",
+  "brand": "Puma",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "16/17",
+  "kit": "away",
+  "brand": "Puma"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "14/15",
+  "kit": "home",
+  "brand": "Puma"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "12/13",
+  "kit": "home",
+  "brand": "Puma",
+  "size": "XL"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "10/11",
+  "kit": "home",
+  "brand": "Puma"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "05/07",
+  "kit": "home",
+  "brand": "Adidas",
+  "size": "L",
+  "comment": "Shearer 9"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "03/05",
+  "kit": "home",
+  "brand": "Adidas",
+  "size": "L",
+  "comment": "Shearer 9"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "99/00",
+  "kit": "away",
+  "brand": "Adidas"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "98/99",
+  "kit": "away",
+  "brand": "Adidas",
+  "comment": "Guivarch 8"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "97/98",
+  "kit": "away",
+  "brand": "Adidas",
+  "size": "XL",
+  "comment": "Shearer 9. Replica"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "96/97",
+  "kit": "away",
+  "brand": "Adidas"
+ },
+ {
+  "status": "bought",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "95/96",
+  "kit": "home",
+  "brand": "Adidas",
+  "size": "M"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "94/95",
+  "kit": "third",
+  "brand": "Asics",
+  "size": "XL"
+ },
+ {
+  "status": "yes",
+  "team": "England",
+  "country": "England",
+  "season": "2011",
+  "kit": "home",
+  "brand": "Umbro"
+ },
+ {
+  "status": "yes",
+  "team": "Liverpool",
+  "country": "England",
+  "season": "02/03",
+  "kit": "home",
+  "brand": "Reebok",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Liverpool",
+  "country": "England",
+  "season": "18/19",
+  "kit": "home",
+  "brand": "New Balance",
+  "size": "L",
+  "comment": "Salah 11"
+ },
+ {
+  "status": "yes",
+  "team": "Arsenal",
+  "country": "England",
+  "season": "15/16",
+  "kit": "home",
+  "brand": "Puma",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Manchester United",
+  "country": "England",
+  "season": "21/22",
+  "kit": "third",
+  "brand": "Adidas",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Manchester City",
+  "country": "England",
+  "season": "03/04",
+  "kit": "away",
+  "brand": "Reebok",
+  "size": "XL"
+ },
+ {
+  "status": "yes",
+  "team": "Tottenham Hotspur",
+  "country": "England",
+  "season": "02/04",
+  "kit": "home",
+  "brand": "Kappa"
+ },
+ {
+  "status": "yes",
+  "team": "West Ham United",
+  "country": "England",
+  "season": "24/25",
+  "kit": "third",
+  "brand": "Umbro",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Leeds United",
+  "country": "England",
+  "season": "07/08",
+  "kit": "home",
+  "brand": "Admiral",
+  "size": "XL"
+ },
+ {
+  "status": "yes",
+  "team": "Portsmouth FC",
+  "country": "England",
+  "season": "10/11",
+  "kit": "home",
+  "brand": "Kappa",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Ipswich Town",
+  "country": "England",
+  "season": "24/25",
+  "kit": "third",
+  "brand": "Umbro",
+  "size": "XL"
+ },
+ {
+  "status": "bought",
+  "team": "Coventry City",
+  "country": "England",
+  "season": "03/04",
+  "kit": "home",
+  "size": "XL",
+  "comment": "спонсор Subaru. Собственный бренд"
+ },
+ {
+  "status": "yes",
+  "team": "Chelsea",
+  "country": "England",
+  "kit": "training",
+  "brand": "Nike",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Germany",
+  "country": "Germany",
+  "season": "2014",
+  "kit": "home",
+  "brand": "Adidas",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Germany",
+  "country": "Germany",
+  "season": "2006",
+  "kit": "goalkeeper",
+  "brand": "Adidas",
+  "size": "XL",
+  "comment": "Lehmann 1"
+ },
+ {
+  "status": "yes",
+  "team": "Hansa Rostock",
+  "country": "Germany",
+  "season": "19/20",
+  "kit": "third",
+  "brand": "Nike",
+  "size": "M"
+ },
+ {
+  "status": "yes",
+  "team": "Hamburg SV",
+  "country": "Germany",
+  "season": "16/17",
+  "kit": "home",
+  "brand": "Adidas",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Hertha BSC",
+  "country": "Germany",
+  "season": "07/08",
+  "kit": "home",
+  "brand": "Nike",
+  "size": "XL"
+ },
+ {
+  "status": "yes",
+  "team": "Hertha BSC",
+  "country": "Germany",
+  "season": "25/26",
+  "kit": "home",
+  "brand": "Castore",
+  "size": "XL"
+ },
+ {
+  "status": "yes",
+  "team": "Bayern München",
+  "country": "Germany",
+  "season": "14/15",
+  "kit": "home",
+  "brand": "Adidas",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Russia",
+  "country": "Russia",
+  "season": "2018",
+  "kit": "home",
+  "brand": "Adidas",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Russia",
+  "country": "Russia",
+  "season": "2014",
+  "kit": "away",
+  "brand": "Adidas",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Spartak Moscow",
+  "country": "Russia",
+  "season": "18/19",
+  "kit": "away",
+  "brand": "Nike"
+ },
+ {
+  "status": "yes",
+  "team": "Spartak Moscow",
+  "country": "Russia",
+  "season": "19/20",
+  "kit": "home",
+  "brand": "Nike"
+ },
+ {
+  "status": "yes",
+  "team": "Spartak Moscow",
+  "country": "Russia",
+  "season": "2006",
+  "kit": "home",
+  "brand": "Nike"
+ },
+ {
+  "status": "yes",
+  "team": "Spain",
+  "country": "Spain",
+  "season": "2016",
+  "kit": "home",
+  "brand": "Adidas",
+  "size": "XL"
+ },
+ {
+  "status": "yes",
+  "team": "Spain",
+  "country": "Spain",
+  "season": "2020",
+  "kit": "home",
+  "brand": "Adidas",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Barcelona",
+  "country": "Spain",
+  "season": "14/15",
+  "kit": "home",
+  "brand": "Nike",
+  "size": "XL"
+ },
+ {
+  "status": "yes",
+  "team": "Ajax",
+  "country": "Netherlands",
+  "season": "18/19",
+  "kit": "home",
+  "brand": "Adidas",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Celtic",
+  "country": "Scotland",
+  "season": "23/24",
+  "kit": "home",
+  "brand": "Adidas",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Napoli",
+  "country": "Italy",
+  "season": "22/23",
+  "kit": "home",
+  "brand": "EA7",
+  "size": "L",
+  "comment": "Christmas edition"
+ },
+ {
+  "status": "yes",
+  "team": "Sparta Prague",
+  "country": "Czech Republic",
+  "season": "06/07",
+  "kit": "away",
+  "brand": "Nike"
+ },
+ {
+  "status": "yes",
+  "team": "France",
+  "country": "France",
+  "season": "2014",
+  "kit": "home",
+  "brand": "Nike",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Marseille",
+  "country": "France",
+  "season": "10/11",
+  "kit": "third",
+  "brand": "Adidas"
+ },
+ {
+  "status": "yes",
+  "team": "Pafos FC",
+  "country": "Cyprus",
+  "season": "24/25",
+  "kit": "away",
+  "brand": "Puma",
+  "size": "XL"
+ },
+ {
+  "status": "yes",
+  "team": "Krasava",
+  "country": "Cyprus",
+  "season": "25/26",
+  "kit": "special",
+  "size": "XL",
+  "comment": "Svoboda"
+ },
+ {
+  "status": "yes",
+  "team": "Anorthosis Famagusta",
+  "country": "Cyprus",
+  "kit": "training",
+  "brand": "Sporta"
+ },
+ {
+  "status": "yes",
+  "team": "Fenerbahce",
+  "country": "Turkey",
+  "season": "14/15",
+  "kit": "away",
+  "brand": "Adidas"
+ },
+ {
+  "status": "yes",
+  "team": "Djurgårdens IF",
+  "country": "Sweden",
+  "season": "2015",
+  "kit": "home",
+  "brand": "Adidas",
+  "size": "XL"
+ },
+ {
+  "status": "yes",
+  "team": "Israel",
+  "country": "Israel",
+  "season": "2008",
+  "kit": "away",
+  "brand": "Adidas",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Portugal",
+  "country": "Portugal",
+  "season": "2004",
+  "kit": "home",
+  "brand": "Nike",
+  "size": "XL"
+ },
+ {
+  "status": "yes",
+  "team": "Japan",
+  "country": "Japan",
+  "season": "2006",
+  "kit": "home",
+  "brand": "Adidas",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Turkey",
+  "country": "Turkey",
+  "season": "2010",
+  "kit": "away",
+  "brand": "Nike"
+ },
+ {
+  "status": "yes",
+  "team": "Brazil",
+  "country": "Brazil",
+  "season": "2018",
+  "kit": "training",
+  "brand": "Nike",
+  "size": "L"
+ },
+ {
+  "status": "yes",
+  "team": "Etoile Sportive du Sahel",
+  "country": "Tunisia",
+  "season": "08/09",
+  "kit": "home",
+  "brand": "Adidas"
+ },
+ {
+  "status": "yes",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "21/22",
+  "kit": "away",
+  "brand": "Castore",
+  "size": "XL",
+  "comment": "Fan version 130 year"
+ },
+ {
+  "status": "yes",
+  "team": "Real Madrid",
+  "country": "Spain",
+  "brand": "Adidas",
+  "size": "L",
+  "comment": "Fan version"
+ },
+ {
+  "status": "yes",
+  "team": "Pafos FC",
+  "country": "Cyprus",
+  "brand": "Puma",
+  "size": "XL",
+  "comment": "Fan version"
+ },
+ {
+  "status": "wishlist",
+  "team": "Bayer Leverkusen",
+  "country": "Germany",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "St. Pauli",
+  "country": "Germany",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "Bayern München",
+  "country": "Germany",
+  "season": "25/26",
+  "kit": "special",
+  "brand": "Adidas",
+  "size": "XL",
+  "comment": "Oktoberfest"
+ },
+ {
+  "status": "wishlist",
+  "team": "Germany",
+  "country": "Germany",
+  "season": "2025",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "Germany",
+  "country": "Germany",
+  "season": "2026",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "Arsenal",
+  "country": "England",
+  "season": "25/26",
+  "kit": "third",
+  "brand": "Adidas",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "Barcelona",
+  "country": "Spain",
+  "season": "25/26",
+  "kit": "away",
+  "brand": "Nike",
+  "size": "XL",
+  "comment": "x Kobe Bryant"
+ },
+ {
+  "status": "wishlist",
+  "team": "Sevilla FC",
+  "country": "Spain",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "Real Madrid",
+  "country": "Spain",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "Atlético Madrid",
+  "country": "Spain",
+  "season": "04/05",
+  "brand": "Nike",
+  "size": "XL",
+  "comment": "Spider-Man"
+ },
+ {
+  "status": "wishlist",
+  "team": "Argentina",
+  "country": "Argentina",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "Italy",
+  "country": "Italy",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "24/25",
+  "kit": "away",
+  "brand": "Adidas",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "24/25",
+  "kit": "home",
+  "brand": "Adidas",
+  "size": "L",
+  "comment": "champions edition"
+ },
+ {
+  "status": "wishlist",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "94/95",
+  "kit": "home",
+  "brand": "Asics",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "80/82",
+  "kit": "home",
+  "brand": "Umbro",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "21/22",
+  "kit": "away",
+  "brand": "Castore",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "19/20",
+  "kit": "home",
+  "brand": "Puma",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "Newcastle United",
+  "country": "England",
+  "season": "26/27",
+  "kit": "away",
+  "brand": "Adidas",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "Man United",
+  "country": "England",
+  "season": "26/27",
+  "kit": "third",
+  "brand": "Adidas",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "Chelsea",
+  "country": "England",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "St Albans City FC",
+  "country": "England",
+  "size": "XL",
+  "comment": "with Enter Shikari https://stalbanscityfc.ktckts.com/brand/merchandise"
+ },
+ {
+  "status": "wishlist",
+  "team": "France",
+  "country": "France",
+  "season": "2026",
+  "kit": "away",
+  "brand": "Nike",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "Lokomotiv",
+  "country": "Russia",
+  "season": "24+",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "Akron",
+  "country": "Russia",
+  "season": "26/27",
+  "kit": "away",
+  "size": "XL"
+ },
+ {
+  "status": "wishlist",
+  "team": "Austria Wein",
+  "country": "Austria",
+  "season": "26/27",
+  "kit": "third",
+  "brand": "Admiral",
+  "size": "XL"
+ }
 ]

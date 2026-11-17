@@ -24,11 +24,13 @@
   <datalist id="seasons"></datalist>
 </form>
 <p id="empty" hidden>Nothing for this team and season.</p>
+<p id="archive" hidden>All kits of this season: <a target="_blank" rel="noopener"></a></p>
 <div id="kits"></div>
 <script>
 const form = document.getElementById('search');
 const grid = document.getElementById('kits');
 const empty = document.getElementById('empty');
+const archive = document.getElementById('archive');
 let kits = [];
 
 const norm = s => s.trim().toLowerCase();
@@ -40,8 +42,18 @@ function fill(id, values) {
     .map(v => `<option value="${v}">`).join('');
 }
 
+// shortcut: the archive's address pattern is guessed from its site, no API; switch to a kit API if it breaks
+const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+function archiveLink(team, season) {
+  const a = archive.querySelector('a');
+  archive.hidden = !(team && season);
+  a.href = `https://www.footballkitarchive.com/${slug(team)}-${slug(season)}-kits/`;
+  a.textContent = `${team} ${season} on Football Kit Archive`;
+}
+
 function render() {
   const team = norm(form.team.value), season = form.season.value.trim();
+  archiveLink(form.team.value.trim(), season);
   const found = kits.filter(k => matches(k, team, season));
   empty.hidden = found.length > 0;
   grid.innerHTML = found.map(k => `

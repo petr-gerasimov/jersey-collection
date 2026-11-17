@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jersey Collection</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0 auto; max-width: 960px; padding: 16px; }
+  form { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  input { font-size: 16px; padding: 8px; flex: 1; min-width: 160px; }
+  #kits { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+  figure { margin: 0; }
+  img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; background: #eee; border-radius: 8px; }
+  figcaption { margin-top: 4px; }
+  .missing { opacity: .5; }
+</style>
+</head>
+<body>
+<h1>Jersey Collection</h1>
+<form id="search">
+  <input name="team" list="teams" placeholder="Club or national team" autocomplete="off">
+  <input name="season" list="seasons" placeholder="Season, e.g. 2003/04" autocomplete="off">
+  <datalist id="teams"></datalist>
+  <datalist id="seasons"></datalist>
+</form>
+<p id="empty" hidden>Nothing for this team and season.</p>
+<div id="kits"></div>
+<script>
+const form = document.getElementById('search');
+const grid = document.getElementById('kits');
+const empty = document.getElementById('empty');
+let kits = [];
+
+const norm = s => s.trim().toLowerCase();
+const matches = (kit, team, season) =>
+  (!team || norm(kit.team).includes(team)) && (!season || kit.season === season);
+
+function fill(id, values) {
+  document.getElementById(id).innerHTML = [...new Set(values)].sort()
+    .map(v => `<option value="${v}">`).join('');
+}
+
+function render() {
+  const team = norm(form.team.value), season = form.season.value.trim();
+  const found = kits.filter(k => matches(k, team, season));
+  empty.hidden = found.length > 0;
+  grid.innerHTML = found.map(k => `
+    <figure class="${k.owned ? '' : 'missing'}">
+      <img src="photos/${k.photo}" alt="${k.team} ${k.season} ${k.kit}" loading="lazy">
+      <figcaption><b>${k.team}</b> ${k.season} · ${k.kit}${k.owned ? '' : ' · not in collection'}</figcaption>
+    </figure>`).join('');
+}
+
+fetch('kits.json').then(r => r.json()).then(data => {
+  kits = data;
+  fill('teams', kits.map(k => k.team));
+  fill('seasons', kits.map(k => k.season));
+  render();
+});
+form.addEventListener('input', render);
+form.addEventListener('submit', e => e.preventDefault());
+</script>
+</body>
+</html>

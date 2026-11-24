@@ -103,10 +103,13 @@ function render() {
   empty.hidden = found.length > 0;
   archiveLink(found[0]?.[0].team || form.team.value.trim(), season);
   showSeason(found[0]?.[0].team, season);
-  // one section per team, teams with the most kits first, newest season first inside
+  // one section per team: teams with the most owned kits first, wishlist-only teams last;
+  // inside, owned and bought kits first, wishlist last, newest season first
+  const owned = list => list.filter(([k]) => k.status !== 'wishlist').length;
   const byTeam = new Map();
   for (const [k, i] of found) (byTeam.get(k.team) || byTeam.set(k.team, []).get(k.team)).push([k, i]);
-  const sections = [...byTeam].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]));
+  const sections = [...byTeam].sort((a, b) => owned(b[1]) - owned(a[1]) || b[1].length - a[1].length || a[0].localeCompare(b[0]));
+  const order = ([a], [b]) => (a.status === 'wishlist') - (b.status === 'wishlist') || (b.season || '').localeCompare(a.season || '');
   const card = ([k, i]) => `
     <figure class="${k.status}" data-i="${i}">
       ${picture(k, i)}
@@ -118,7 +121,7 @@ function render() {
   grid.innerHTML = sections.map(([name, list]) => `
     <section>
       <h2>${esc(name)}<small>${list.length}</small></h2>
-      <div class="grid">${list.sort((a, b) => (b[0].season || '').localeCompare(a[0].season || '')).map(card).join('')}</div>
+      <div class="grid">${list.sort(order).map(card).join('')}</div>
     </section>`).join('');
   grid.querySelectorAll('.nophoto').forEach(el => seen.observe(el));
 }

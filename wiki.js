@@ -99,5 +99,31 @@ const wiki = (() => {
     });
   }
 
-  return { fullSeason, findSeasonPage, seasonInfo, country };
+  // The kit maker of a club in a season, from the "Personnel and kits" table of the league's season page; '' when unknown.
+  function kitMaker(league, season, team) {
+    return memo(`maker:${league}:${season}:${team}`, async () => {
+      const q = `${fullSeason(season)} ${league}`;
+      const d = await json(`${WP}/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(q)}&srlimit=5&format=json&origin=*`);
+      const hit = d.query.search.find(r => r.title.startsWith(fullSeason(season)));
+      if (!hit) return '';
+      const r = await fetch(`${WP}/api/rest_v1/page/html/${encodeURIComponent(hit.title.replace(/ /g, '_'))}`);
+      if (!r.ok) return '';
+      const doc = new DOMParser().parseFromString(await r.text(), 'text/html');
+      const want = team.toLowerCase();
+      for (const table of doc.querySelectorAll('table')) {
+        const heads = [...table.querySelectorAll('tr:first-child th')].map(text);
+        const club = heads.findIndex(h => /^(team|club)$/i.test(h)), maker = heads.findIndex(h => /kit (manufacturer|maker|supplier)/i.test(h));
+        if (club < 0 || maker < 0) continue;
+        for (const row of table.querySelectorAll('tr')) {
+          const cells = row.querySelectorAll('td');
+          if (cells.length <= maker) continue;
+          const name = text(cells[club]).toLowerCase();
+          if (name && (name.includes(want) || want.includes(name))) return text(cells[maker]).replace(/\s*\(.*\)$/, '');
+        }
+      }
+      return '';
+    });
+  }
+
+  return { fullSeason, findSeasonPage, seasonInfo, country, kitMaker };
 })();

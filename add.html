@@ -38,7 +38,7 @@
       <option>special</option><option>training</option><option>goalkeeper</option></select></label></div>
   </div>
   <div class="row">
-    <div><label>Brand<input name="brand" list="brands" autocomplete="off"></label></div>
+    <div><label>Brand<input name="brand" list="brands" autocomplete="off"><small id="brandHint"></small></label></div>
     <div><label>Version<select name="version">
       <option value=""></option>
       <option value="player issue">Player issue (authentic)</option>
@@ -72,6 +72,7 @@ const result = document.getElementById('result');
 const countryHint = document.getElementById('countryHint');
 const seasonHint = document.getElementById('seasonHint');
 const playerHint = document.getElementById('playerHint');
+const brandHint = document.getElementById('brandHint');
 const forget = document.getElementById('forget');
 let kits = [], teams = [];
 
@@ -128,8 +129,20 @@ async function autofill() {
       catch { countryHint.textContent = 'Wikidata did not answer'; }
     }
   }
-  if (!form.brand.value) form.brand.value = (same.find(k => k.season === season && k.brand) || same.slice(-1)[0])?.brand || '';
   seasonList();
+  // brand: the same season in the collection, else the league's kit table on Wikipedia, else the club's latest kit here;
+  // a value the form filled in is replaced when the season changes, a typed one is kept
+  if ((!form.brand.value || brandHint.dataset.auto) && team && season) {
+    const sameSeason = same.find(k => k.season === season && k.brand)?.brand, league = known(team)?.league;
+    let brand = sameSeason, how = 'from the collection';
+    if (!brand && league) {
+      brandHint.textContent = 'looking up the league on Wikipedia…';
+      try { brand = await wiki.kitMaker(league, season, team); how = 'from Wikipedia'; } catch { brand = ''; }
+    }
+    if (!brand) { brand = same.filter(k => k.brand).slice(-1)[0]?.brand || ''; how = 'from another season here'; }
+    form.brand.value = brand; brandHint.dataset.auto = '1';
+    brandHint.textContent = brand ? `${how}, check it` : 'not found, type it';
+  }
 }
 
 // The player comes from the squad table on the club's Wikipedia season page.
@@ -152,6 +165,7 @@ async function playerByNumber() {
 let timer;
 const soon = fn => { clearTimeout(timer); timer = setTimeout(fn, 500); };
 form.team.addEventListener('change', autofill);
+form.brand.addEventListener('input', () => { delete brandHint.dataset.auto; brandHint.textContent = ''; });
 form.country.addEventListener('change', seasonList);
 form.season.addEventListener('change', () => { autofill(); checkSeason(); playerByNumber(); });
 form.season.addEventListener('input', () => form.season.setCustomValidity(''));
@@ -203,7 +217,7 @@ form.addEventListener('submit', async e => {
     await gh('kits.json', { method: 'PUT', body: JSON.stringify({ message: `Add ${kit.team} ${kit.season} ${kit.kit}`, content: b64(body), sha: cur.sha }) });
     kits = all;
     result.innerHTML = `Saved: <b>${esc(kit.team)} ${esc(kit.season)} ${esc(kit.kit)}</b>. The site updates in about a minute. <a href="index.html">Collection</a>`;
-    form.reset(); countryHint.textContent = playerHint.textContent = ''; seasonList();
+    form.reset(); countryHint.textContent = playerHint.textContent = brandHint.textContent = ''; delete brandHint.dataset.auto; seasonList();
   } catch (err) { result.textContent = 'Not saved. ' + err.message; }
 });
 forget.addEventListener('click', () => { localStorage.removeItem('gh_token'); forget.hidden = true; });

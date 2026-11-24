@@ -10,12 +10,14 @@ const wiki = (() => {
   // "97/98" -> "1997–98", "05/07" -> "2005–07", "2014" -> "2014"
   const fullSeason = s => s.replace(/^(\d\d)\/(\d\d)$/, (_, a, b) => (a < 30 ? '20' : '19') + a + '–' + b);
 
-  async function findSeasonPage(team, season) {
+  function findSeasonPage(team, season) {
+    return memo(`page:${team}:${season}`, async () => {
     const q = `${team} ${fullSeason(season)} season`;
     const d = await json(`${WP}/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(q)}&srlimit=5&format=json&origin=*`);
     const year = fullSeason(season).slice(0, 4);
     const hit = d.query.search.find(r => /season$/.test(r.title) && r.title.includes(year) && r.title.toLowerCase().includes(team.toLowerCase().split(' ')[0]));
     return hit ? hit.title : null;
+    });
   }
 
   const text = el => el.textContent.replace(/\[\d+\]/g, '').replace(/\s+/g, ' ').trim();

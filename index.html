@@ -3,26 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jersey Collection</title>
-<style>
-  body { font-family: system-ui, sans-serif; margin: 0 auto; max-width: 960px; padding: 16px; }
-  form { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
-  input { font-size: 16px; padding: 8px; flex: 1; min-width: 160px; }
-  #kits { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
-  figure { margin: 0; }
-  figure > img, .nophoto { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; background: #eee; border-radius: 8px; display: block; }
-  .nophoto { display: grid; place-items: center; overflow: hidden; }
-  .nophoto > div { zoom: 1.5; }
-  figcaption { margin-top: 4px; }
-  small { color: #666; }
-  .description { margin: 6px 0 2px; font-size: 14px; line-height: 1.35; }
-  #season { background: #f4f4f4; border-radius: 8px; padding: 10px 12px; margin-bottom: 16px; font-size: 14px; }
-  h1 a { font-size: 14px; font-weight: normal; margin-left: 12px; }
-  .wishlist { opacity: .5; }
-</style>
+<title>Eleven Jersey</title>
+<link rel="icon" href="favicon-32.png" sizes="32x32">
+<link rel="icon" href="favicon.png" sizes="278x278">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Jersey Collection <a href="add.html">Add a kit</a></h1>
+<header>
+  <a href="index.html"><img src="logo.png" alt="Eleven Jersey" class="logo"></a>
+  <a href="add.html" class="button">Add a kit</a>
+</header>
 <form id="search">
   <input name="team" list="teams" placeholder="Club or national team" autocomplete="off">
   <input name="season" list="seasons" placeholder="Season, e.g. 2003/04" autocomplete="off">
@@ -33,32 +24,39 @@
 <p id="archive" hidden>All kits of this season: <a target="_blank" rel="noopener"></a></p>
 <div id="season" hidden></div>
 <div id="kits"></div>
+
+<dialog id="detail">
+  <button class="close" aria-label="Close">×</button>
+  <div class="picture"></div>
+  <div class="facts"></div>
+</dialog>
+
 <script src="wiki.js"></script>
 <script>
-const seasonBox = document.getElementById('season');
 const form = document.getElementById('search');
 const grid = document.getElementById('kits');
 const empty = document.getElementById('empty');
 const archive = document.getElementById('archive');
+const seasonBox = document.getElementById('season');
+const detail = document.getElementById('detail');
 let kits = [];
 
 const norm = s => s.trim().toLowerCase();
 const matches = (kit, team, season) =>
   (!team || norm(kit.team).includes(team)) && (!season || kit.season === season);
+const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 function fill(id, values) {
   document.getElementById(id).innerHTML = [...new Set(values)].sort()
-    .map(v => `<option value="${v}">`).join('');
+    .map(v => `<option value="${esc(v)}">`).join('');
 }
 
 // shortcut: the archive's address pattern is guessed from its site, no API; switch to a kit API if it breaks
-const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-// "25/26" -> "2025-26", "99/00" -> "1999-00", "2014" stays: the archive's season format
-const fullSeason = s => s.replace(/^(\d\d)\/(\d\d)$/, (_, a, b) => (a < 30 ? '20' : '19') + a + '-' + b);
 function archiveLink(team, season) {
   const a = archive.querySelector('a');
   archive.hidden = !(team && season);
-  a.href = `https://www.footballkitarchive.com/${slug(team)}-${fullSeason(season)}-kits/`;
+  a.href = `https://www.footballkitarchive.com/${slug(team)}-${wiki.fullSeason(season).replace('–', '-')}-kits/`;
   a.textContent = `${team} ${season} on Football Kit Archive`;
 }
 
@@ -71,41 +69,80 @@ async function showSeason(team, season) {
     const title = await wiki.findSeasonPage(team, season);
     if (!title) { seasonBox.textContent = 'No Wikipedia season page for this team and season.'; return; }
     const info = await wiki.seasonInfo(title);
-    if (form.team.value.trim() !== team && !form.team.value.trim().startsWith(team)) return;
-    const parts = info.competitions.map(c => `<b>${c.name}</b> ${c.result}`);
-    if (info.topScorer) parts.push(`<b>Top scorer</b> ${info.topScorer}`);
+    const parts = info.competitions.map(c => `<b>${esc(c.name)}</b> ${esc(c.result)}`);
+    if (info.topScorer) parts.push(`<b>Top scorer</b> ${esc(info.topScorer)}`);
     seasonBox.innerHTML = parts.join(' · ') + ` · <a href="${info.url}" target="_blank" rel="noopener">Wikipedia</a>`;
-    // a card without a photo shows Wikipedia's drawing of that kit
-    for (const box of grid.querySelectorAll('.nophoto[data-kit]')) box.innerHTML = info.kits[box.dataset.kit] || '';
   } catch (e) { seasonBox.textContent = 'Wikipedia did not answer: ' + e.message; }
 }
 
+// Wikipedia's drawing of a kit, for a card without a photo; '' when the season page or the kit is missing.
+async function drawing(k) {
+  try {
+    const title = await wiki.findSeasonPage(k.team, k.season);
+    return title ? (await wiki.seasonInfo(title)).kits[k.kit] || '' : '';
+  } catch { return ''; }
+}
+// Drawings load as cards scroll into view, so the first screen costs a few requests, not one per kit.
+const seen = new IntersectionObserver(entries => {
+  for (const e of entries) {
+    if (!e.isIntersecting) continue;
+    seen.unobserve(e.target);
+    drawing(kits[e.target.dataset.i]).then(html => { e.target.innerHTML = html; });
+  }
+}, { rootMargin: '200px' });
+
+const picture = (k, i) => k.photo
+  ? `<img src="photos/${esc(k.photo)}" alt="${esc(k.team)} ${esc(k.season || '')} ${esc(k.kit || '')}" loading="lazy">`
+  : `<div class="nophoto" data-i="${i}"></div>`;
+const line = k => [k.brand, k.version, k.size, k.number && k.player ? `${k.number} ${k.player}` : k.number || k.player, k.comment].filter(Boolean).map(esc).join(' · ');
+
 function render() {
   const team = norm(form.team.value), season = form.season.value.trim();
-  const found = kits.filter(k => matches(k, team, season));
-  archiveLink(found[0]?.team || form.team.value.trim(), season);
-  showSeason(found[0]?.team, season);
+  const found = kits.map((k, i) => [k, i]).filter(([k]) => matches(k, team, season));
   empty.hidden = found.length > 0;
-  grid.innerHTML = found.map(k => `
-    <figure class="${k.status}">
-      ${k.photo ? `<img src="photos/${k.photo}" alt="${k.team} ${k.season || ''} ${k.kit || ''}" loading="lazy">` : `<div class="nophoto" data-kit="${k.kit || ''}"></div>`}
+  archiveLink(found[0]?.[0].team || form.team.value.trim(), season);
+  showSeason(found[0]?.[0].team, season);
+  grid.innerHTML = found.map(([k, i]) => `
+    <figure class="${k.status}" data-i="${i}">
+      ${picture(k, i)}
       <figcaption>
-        <b>${k.team}</b> ${k.season || ''} ${k.kit || ''}${k.status === 'yes' ? '' : ' · ' + k.status}<br>
-        <small>${[k.brand, k.version, k.size, k.number && k.player ? `${k.number} ${k.player}` : k.number || k.player, k.comment].filter(Boolean).join(' · ')}</small>
-        ${k.description ? `<p class="description">${k.description}</p>` : ''}
-        ${k.link ? `<small><a href="${k.link}" target="_blank" rel="noopener">${new URL(k.link).hostname.replace(/^www\./, '')}</a></small>` : ''}
+        <b>${esc(k.team)}</b> ${esc(k.season || '')} ${esc(k.kit || '')}${k.status === 'yes' ? '' : ' · ' + k.status}<br>
+        <small>${line(k)}</small>
       </figcaption>
     </figure>`).join('');
+  grid.querySelectorAll('.nophoto').forEach(el => seen.observe(el));
+}
+
+// A card opens the kit: picture, every field, the links.
+function open(i) {
+  const k = kits[i];
+  const rows = [['Team', k.team], ['Country', k.country], ['Season', k.season], ['Kit', k.kit], ['Brand', k.brand], ['Version', k.version],
+    ['Size', k.size], ['Number', k.number], ['Player', k.player], ['Status', { yes: 'in collection', bought: 'bought, on its way', wishlist: 'wishlist' }[k.status]], ['Notes', k.comment]]
+    .filter(([, v]) => v);
+  detail.querySelector('.picture').innerHTML = picture(k, i);
+  detail.querySelector('.facts').innerHTML = `
+    <h2>${esc(k.team)} <span>${esc(k.season || '')} ${esc(k.kit || '')}</span></h2>
+    ${k.description ? `<p>${esc(k.description)}</p>` : ''}
+    <dl>${rows.map(([n, v]) => `<dt>${n}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
+    <p class="links">
+      ${k.link ? `<a href="${esc(k.link)}" target="_blank" rel="noopener">Item page</a>` : ''}
+      ${k.season ? `<a href="https://www.footballkitarchive.com/${slug(k.team)}-${wiki.fullSeason(k.season).replace('–', '-')}-kits/" target="_blank" rel="noopener">Football Kit Archive</a>` : ''}
+    </p>`;
+  detail.showModal();
+  if (!k.photo) drawing(k).then(html => { detail.querySelector('.nophoto').innerHTML = html; });
 }
 
 fetch('kits.json').then(r => r.json()).then(data => {
   kits = data;
   fill('teams', kits.map(k => k.team));
-  fill('seasons', kits.map(k => k.season));
+  fill('seasons', kits.map(k => k.season).filter(Boolean));
   render();
 });
 form.addEventListener('input', render);
 form.addEventListener('submit', e => e.preventDefault());
+grid.addEventListener('click', e => { const f = e.target.closest('figure'); if (f) open(f.dataset.i); });
+detail.querySelector('.close').addEventListener('click', () => detail.close());
+detail.addEventListener('click', e => { if (e.target === detail) detail.close(); });
 </script>
 </body>
 </html>

@@ -3,21 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Add a kit</title>
+<title>Add a kit · Eleven Jersey</title>
+<link rel="icon" href="favicon-32.png" sizes="32x32">
+<link rel="icon" href="favicon.png" sizes="278x278">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="stylesheet" href="style.css">
 <style>
-  body { font-family: system-ui, sans-serif; margin: 0 auto; max-width: 560px; padding: 16px; }
-  label { display: block; margin: 12px 0 4px; font-size: 14px; color: #333; }
-  input, select, textarea { font-size: 16px; padding: 8px; width: 100%; box-sizing: border-box; }
+  body { max-width: 600px; }
+  label { display: block; margin: 12px 0 4px; font-size: 14px; color: var(--ink-soft); }
+  input, select, textarea { width: 100%; }
   textarea { min-height: 72px; }
   .row { display: flex; gap: 8px; } .row > div { flex: 1; }
-  button { font-size: 16px; padding: 10px 16px; margin-top: 16px; }
-  small { color: #666; display: block; margin-top: 2px; min-height: 1em; }
+  form button { margin-top: 16px; }
+  #forget { background: none; color: var(--ink-soft); }
+  label small { display: block; margin-top: 2px; min-height: 1em; }
   #result { white-space: pre-wrap; margin-top: 16px; }
   #result textarea { min-height: 160px; font-family: monospace; font-size: 13px; }
 </style>
 </head>
 <body>
-<h1>Add a kit <a href="index.html" style="font-size:14px;font-weight:normal;margin-left:12px">Collection</a></h1>
+<header>
+  <a href="index.html"><img src="logo.png" alt="Eleven Jersey" class="logo"></a>
+  <a href="index.html" class="button">Collection</a>
+</header>
+<h1>Add a kit</h1>
 <form id="add">
   <label>Link to the item<input name="link" type="url" placeholder="https://… (shop page, optional)"></label>
   <label>Club or national team *<input name="team" list="teams" required autocomplete="off"></label>
@@ -44,8 +53,8 @@
   <label>Notes<input name="comment"></label>
   <label>Photo<input name="photo" type="file" accept="image/*"></label>
   <datalist id="teams"></datalist><datalist id="countries"></datalist><datalist id="seasons"></datalist><datalist id="brands"></datalist>
-  <button type="submit">Save to GitHub</button>
-  <button type="button" id="forget" hidden>Forget token</button>
+  <button type="submit" class="button">Save to GitHub</button>
+  <button type="button" id="forget" class="button" hidden>Forget token</button>
 </form>
 <div id="result"></div>
 <script src="wiki.js"></script>

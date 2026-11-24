@@ -1,10 +1,11 @@
-# Jersey Collection
+# Eleven Jersey
 
 A static site listing my football jerseys. Type a club or national team and a season to see the kits,
 the season's results from Wikipedia, and a link to all kits of that season on Football Kit Archive.
 
-- `index.html` — the collection: search form, kit cards, season block. A card without a photo shows
-  Wikipedia's drawing of that kit from the club's season page. No build step.
+- `index.html` — the collection: search form, kit cards, season block; a card opens the kit's details. A card
+  without a photo shows Wikipedia's drawing of that kit from the club's season page. No build step.
+- `style.css` — the look, in the logo's cream and green. `logo.png`, `favicon.png`, `favicon-32.png` — the brand.
 - `add.html` — the form that adds a kit. Country and brand are filled from the collection, a new club's
   country from Wikidata, the player from the squad on the club's Wikipedia season page. Required: club,
   season, kit, status. It saves straight to this repository through the GitHub API with a fine-grained

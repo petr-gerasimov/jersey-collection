@@ -11,7 +11,8 @@ the season's results from Wikipedia, and a link to all kits of that season on Fo
   season, kit, status. It saves straight to this repository through the GitHub API with a fine-grained
   token (Contents: read and write) kept in the browser's local storage; without a token it shows the
   JSON to paste by hand.
-- `wiki.js` — the Wikipedia and Wikidata lookups, called from the browser (both APIs allow it).
+- `wiki.js` — the Wikipedia and Wikidata lookups, called from the browser (both APIs allow it); results are
+  kept in the browser's local storage for 30 days, so a season page is fetched once.
 - `kits.json` — the collection, one object per kit: `status` (`yes` owned, `bought` on its way,
   `wishlist`), `team`, `country`, `season` (`25/26` or `2014`), `kit` (`home`, `away`, `third`, `fourth`,
   `special`, `training`, `goalkeeper`), `brand`, `version` (`authentic`, `fan`, `replica`), `size`,

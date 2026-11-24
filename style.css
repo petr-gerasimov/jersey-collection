@@ -18,7 +18,8 @@ figure { margin: 0; background: var(--card); border: 1px solid var(--line); bord
 figure:hover { transform: translateY(-2px); }
 figure > img, .nophoto { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; background: var(--paper); border-radius: 6px; display: block; }
 .nophoto { display: grid; place-items: center; overflow: hidden; }
-.nophoto > div { zoom: 1.5; }
+/* Wikipedia's kit drawings are 38×59 px pixel art: shown at their own size, bigger only in whole steps */
+.nophoto > div { image-rendering: pixelated; }
 figcaption { margin-top: 8px; line-height: 1.3; }
 small { color: var(--ink-soft); }
 .wishlist { opacity: .55; }
@@ -27,7 +28,7 @@ dialog::backdrop { background: rgba(45, 73, 57, .5); }
 dialog .close { position: absolute; right: 8px; top: 8px; font-size: 24px; line-height: 1; background: none; border: 0; color: var(--ink); cursor: pointer; padding: 4px 8px; }
 dialog[open] { display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; padding: 24px; }
 dialog .picture img, dialog .picture .nophoto { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 8px; background: var(--paper); }
-dialog .picture .nophoto > div { zoom: 2.2; }
+dialog .picture .nophoto > div { zoom: 2; }
 dialog h2 { margin: 0 0 8px; font-size: 22px; } dialog h2 span { font-weight: 400; }
 dialog dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 12px 0; font-size: 14px; }
 dialog dt { color: var(--ink-soft); } dialog dd { margin: 0; }

@@ -3,8 +3,18 @@
 const wiki = (() => {
   const WP = 'https://en.wikipedia.org';
   const WD = 'https://www.wikidata.org/w/api.php';
+  // Results live in memory for the visit and in localStorage for 30 days, so a season page is fetched once per browser.
   const cache = new Map();
-  const memo = (key, fn) => cache.has(key) ? cache.get(key) : (cache.set(key, fn().catch(e => { cache.delete(key); throw e; })), cache.get(key));
+  const TTL = 30 * 24 * 3600 * 1000;
+  const stored = key => { try { const v = JSON.parse(localStorage.getItem('wiki:' + key)); return v && Date.now() - v.t < TTL ? v.v : undefined; } catch { return undefined; } };
+  const store = (key, v) => { try { localStorage.setItem('wiki:' + key, JSON.stringify({ t: Date.now(), v })); } catch { /* full or blocked: live without it */ } };
+  function memo(key, fn) {
+    if (cache.has(key)) return cache.get(key);
+    const hit = stored(key);
+    const p = hit !== undefined ? Promise.resolve(hit) : fn().then(v => (store(key, v), v)).catch(e => { cache.delete(key); throw e; });
+    cache.set(key, p);
+    return p;
+  }
   const json = async url => { const r = await fetch(url); if (!r.ok) throw new Error(`${r.status} ${url}`); return r.json(); };
 
   // "97/98" -> "1997–98", "05/07" -> "2005–07", "2014" -> "2014"

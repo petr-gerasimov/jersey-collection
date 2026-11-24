@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add a kit</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0 auto; max-width: 560px; padding: 16px; }
+  label { display: block; margin: 12px 0 4px; font-size: 14px; color: #333; }
+  input, select, textarea { font-size: 16px; padding: 8px; width: 100%; box-sizing: border-box; }
+  textarea { min-height: 72px; }
+  .row { display: flex; gap: 8px; } .row > div { flex: 1; }
+  button { font-size: 16px; padding: 10px 16px; margin-top: 16px; }
+  small { color: #666; display: block; margin-top: 2px; min-height: 1em; }
+  #result { white-space: pre-wrap; margin-top: 16px; }
+  #result textarea { min-height: 160px; font-family: monospace; font-size: 13px; }
+</style>
+</head>
+<body>
+<h1>Add a kit <a href="index.html" style="font-size:14px;font-weight:normal;margin-left:12px">Collection</a></h1>
+<form id="add">
+  <label>Link to the item<input name="link" type="url" placeholder="https://… (shop page, optional)"></label>
+  <label>Club or national team *<input name="team" list="teams" required autocomplete="off"></label>
+  <label>Country<input name="country" list="countries" autocomplete="off"><small id="countryHint"></small></label>
+  <div class="row">
+    <div><label>Season *<input name="season" list="seasons" placeholder="25/26 or 2014" required autocomplete="off"></label></div>
+    <div><label>Kit *<select name="kit" required>
+      <option value="">—</option><option>home</option><option>away</option><option>third</option><option>fourth</option>
+      <option>special</option><option>training</option><option>goalkeeper</option></select></label></div>
+  </div>
+  <div class="row">
+    <div><label>Brand<input name="brand" list="brands" autocomplete="off"></label></div>
+    <div><label>Version<select name="version"><option value=""></option><option>authentic</option><option>fan</option><option>replica</option></select></label></div>
+  </div>
+  <div class="row">
+    <div><label>Size<select name="size"><option value=""></option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option></select></label></div>
+    <div><label>Status *<select name="status" required><option value="yes">in collection</option><option value="wishlist">wishlist</option><option value="bought">bought, on its way</option></select></label></div>
+  </div>
+  <div class="row">
+    <div><label>Number<input name="number" inputmode="numeric" autocomplete="off"></label></div>
+    <div><label>Player<input name="player" autocomplete="off"><small id="playerHint"></small></label></div>
+  </div>
+  <label>Description<textarea name="description" placeholder="What the kit shows, from the club's or brand's own site"></textarea></label>
+  <label>Notes<input name="comment"></label>
+  <label>Photo<input name="photo" type="file" accept="image/*"></label>
+  <datalist id="teams"></datalist><datalist id="countries"></datalist><datalist id="seasons"></datalist><datalist id="brands"></datalist>
+  <button type="submit">Save to GitHub</button>
+  <button type="button" id="forget" hidden>Forget token</button>
+</form>
+<div id="result"></div>
+<script src="wiki.js"></script>
+<script>
+const REPO = 'petr-gerasimov/jersey-collection';
+const form = document.getElementById('add');
+const result = document.getElementById('result');
+const countryHint = document.getElementById('countryHint');
+const playerHint = document.getElementById('playerHint');
+const forget = document.getElementById('forget');
+let kits = [];
+
+const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const uniq = a => [...new Set(a.filter(Boolean))].sort();
+function fill(id, values) { document.getElementById(id).innerHTML = uniq(values).map(v => `<option value="${v}">`).join(''); }
+
+fetch('kits.json').then(r => r.json()).then(data => {
+  kits = data;
+  fill('teams', kits.map(k => k.team)); fill('countries', kits.map(k => k.country));
+  fill('seasons', kits.map(k => k.season)); fill('brands', kits.map(k => k.brand));
+});
+forget.hidden = !localStorage.getItem('gh_token');
+
+// Country and brand come from the kits already in the collection; a new club's country from Wikidata.
+async function autofill() {
+  const team = form.team.value.trim(), season = form.season.value.trim();
+  const same = kits.filter(k => k.team.toLowerCase() === team.toLowerCase());
+  if (!form.country.value && team) {
+    const known = same.find(k => k.country)?.country;
+    if (known) { form.country.value = known; countryHint.textContent = 'from the collection'; }
+    else {
+      countryHint.textContent = 'asking Wikidata…';
+      try { form.country.value = await wiki.country(team); countryHint.textContent = form.country.value ? 'from Wikidata, check it' : 'not found, type it'; }
+      catch { countryHint.textContent = 'Wikidata did not answer'; }
+    }
+  }
+  if (!form.brand.value) form.brand.value = (same.find(k => k.season === season && k.brand) || same.slice(-1)[0])?.brand || '';
+}
+
+// The player comes from the squad table on the club's Wikipedia season page.
+async function playerByNumber() {
+  const team = form.team.value.trim(), season = form.season.value.trim(), n = form.number.value.trim();
+  if (!(team && season && n)) return;
+  playerHint.textContent = 'looking up the squad on Wikipedia…';
+  try {
+    const title = await wiki.findSeasonPage(team, season);
+    if (!title) { playerHint.textContent = 'no Wikipedia season page, type the name'; return; }
+    const name = (await wiki.seasonInfo(title)).squad[n];
+    if (name) { form.player.value = name; playerHint.textContent = `from ${title}, check it`; }
+    else playerHint.textContent = `number ${n} is not in the squad on ${title}`;
+  } catch (e) { playerHint.textContent = 'Wikipedia did not answer: ' + e.message; }
+}
+form.team.addEventListener('change', autofill);
+form.season.addEventListener('change', autofill);
+form.number.addEventListener('change', playerByNumber);
+form.season.addEventListener('change', playerByNumber);
+
+const b64 = bytes => btoa(String.fromCharCode(...bytes));
+const utf8 = s => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\n/g, '')), c => c.charCodeAt(0)));
+async function gh(path, opts = {}) {
+  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
+    ...opts, headers: { Authorization: `Bearer ${localStorage.getItem('gh_token')}`, Accept: 'application/vnd.github+json', ...(opts.headers || {}) } });
+  if (!r.ok) throw new Error(`GitHub ${r.status} on ${path}: ${(await r.json()).message || ''}`);
+  return r.json();
+}
+
+function record() {
+  const f = new FormData(form), kit = {};
+  for (const key of ['status', 'team', 'country', 'season', 'kit', 'brand', 'version', 'size', 'number', 'player', 'description', 'comment', 'link']) {
+    const v = (f.get(key) || '').trim();
+    if (v) kit[key] = v;
+  }
+  const photo = form.photo.files[0];
+  if (photo) kit.photo = [slug(kit.team), slug(kit.season), kit.kit, Date.now().toString(36)].join('-') + '.' + (photo.name.split('.').pop() || 'jpg').toLowerCase();
+  return kit;
+}
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const kit = record();
+  if (!localStorage.getItem('gh_token')) {
+    const t = prompt('GitHub token with write access to the repository (fine-grained, Contents: read and write). It stays in this browser only. Leave empty to get the JSON to paste by hand.');
+    if (t) { localStorage.setItem('gh_token', t.trim()); forget.hidden = false; }
+  }
+  if (!localStorage.getItem('gh_token')) {
+    result.innerHTML = `Add this to kits.json${kit.photo ? ` and put the photo in photos/${kit.photo}` : ''}:<br><textarea readonly>${JSON.stringify(kit, null, 1)}</textarea>`;
+    return;
+  }
+  result.textContent = 'Saving…';
+  try {
+    const photo = form.photo.files[0];
+    if (photo) {
+      const bytes = new Uint8Array(await photo.arrayBuffer());
+      await gh(`photos/${kit.photo}`, { method: 'PUT', body: JSON.stringify({ message: `Photo: ${kit.team} ${kit.season} ${kit.kit}`, content: b64(bytes) }) });
+    }
+    const cur = await gh('kits.json', { headers: { 'If-None-Match': '' } });
+    const all = JSON.parse(utf8(cur.content));
+    all.push(kit);
+    const body = new TextEncoder().encode(JSON.stringify(all, null, 1));
+    await gh('kits.json', { method: 'PUT', body: JSON.stringify({ message: `Add ${kit.team} ${kit.season} ${kit.kit}`, content: b64(body), sha: cur.sha }) });
+    kits = all;
+    result.innerHTML = `Saved: <b>${kit.team} ${kit.season} ${kit.kit}</b>. The site updates in about a minute. <a href="index.html">Collection</a>`;
+    form.reset(); countryHint.textContent = playerHint.textContent = '';
+  } catch (err) { result.textContent = 'Not saved. ' + err.message; }
+});
+forget.addEventListener('click', () => { localStorage.removeItem('gh_token'); forget.hidden = true; });
+</script>
+</body>
+</html>

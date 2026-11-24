@@ -13,12 +13,14 @@
   img, .nophoto { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; background: #eee; border-radius: 8px; display: block; }
   figcaption { margin-top: 4px; }
   small { color: #666; }
-  .story { margin: 6px 0 2px; font-size: 14px; line-height: 1.35; }
+  .description { margin: 6px 0 2px; font-size: 14px; line-height: 1.35; }
+  #season { background: #f4f4f4; border-radius: 8px; padding: 10px 12px; margin-bottom: 16px; font-size: 14px; }
+  h1 a { font-size: 14px; font-weight: normal; margin-left: 12px; }
   .wishlist { opacity: .5; }
 </style>
 </head>
 <body>
-<h1>Jersey Collection</h1>
+<h1>Jersey Collection <a href="add.html">Add a kit</a></h1>
 <form id="search">
   <input name="team" list="teams" placeholder="Club or national team" autocomplete="off">
   <input name="season" list="seasons" placeholder="Season, e.g. 2003/04" autocomplete="off">
@@ -27,8 +29,11 @@
 </form>
 <p id="empty" hidden>Nothing for this team and season.</p>
 <p id="archive" hidden>All kits of this season: <a target="_blank" rel="noopener"></a></p>
+<div id="season" hidden></div>
 <div id="kits"></div>
+<script src="wiki.js"></script>
 <script>
+const seasonBox = document.getElementById('season');
 const form = document.getElementById('search');
 const grid = document.getElementById('kits');
 const empty = document.getElementById('empty');
@@ -55,19 +60,36 @@ function archiveLink(team, season) {
   a.textContent = `${team} ${season} on Football Kit Archive`;
 }
 
+// The season's results from the club's Wikipedia season page, when there is one.
+async function showSeason(team, season) {
+  seasonBox.hidden = !(team && season);
+  if (seasonBox.hidden) return;
+  seasonBox.textContent = 'Looking up the season on Wikipedia…';
+  try {
+    const title = await wiki.findSeasonPage(team, season);
+    if (!title) { seasonBox.textContent = 'No Wikipedia season page for this team and season.'; return; }
+    const info = await wiki.seasonInfo(title);
+    if (form.team.value.trim() !== team && !form.team.value.trim().startsWith(team)) return;
+    const parts = info.competitions.map(c => `<b>${c.name}</b> ${c.result}`);
+    if (info.topScorer) parts.push(`<b>Top scorer</b> ${info.topScorer}`);
+    seasonBox.innerHTML = parts.join(' · ') + ` · <a href="${info.url}" target="_blank" rel="noopener">Wikipedia</a>`;
+  } catch (e) { seasonBox.textContent = 'Wikipedia did not answer: ' + e.message; }
+}
+
 function render() {
   const team = norm(form.team.value), season = form.season.value.trim();
   const found = kits.filter(k => matches(k, team, season));
   archiveLink(found[0]?.team || form.team.value.trim(), season);
+  showSeason(found[0]?.team, season);
   empty.hidden = found.length > 0;
   grid.innerHTML = found.map(k => `
     <figure class="${k.status}">
       ${k.photo ? `<img src="photos/${k.photo}" alt="${k.team} ${k.season || ''} ${k.kit || ''}" loading="lazy">` : '<div class="nophoto"></div>'}
       <figcaption>
         <b>${k.team}</b> ${k.season || ''} ${k.kit || ''}${k.status === 'yes' ? '' : ' · ' + k.status}<br>
-        <small>${[k.brand, k.size, k.comment].filter(Boolean).join(' · ')}</small>
-        ${k.story ? `<p class="story">${k.story}</p>` : ''}
-        ${k.sources ? `<small>${k.sources.map(u => `<a href="${u}" target="_blank" rel="noopener">${new URL(u).hostname.replace(/^www\./, '')}</a>`).join(' · ')}</small>` : ''}
+        <small>${[k.brand, k.version, k.size, k.number && k.player ? `${k.number} ${k.player}` : k.number || k.player, k.comment].filter(Boolean).join(' · ')}</small>
+        ${k.description ? `<p class="description">${k.description}</p>` : ''}
+        ${k.link ? `<small><a href="${k.link}" target="_blank" rel="noopener">${new URL(k.link).hostname.replace(/^www\./, '')}</a></small>` : ''}
       </figcaption>
     </figure>`).join('');
 }

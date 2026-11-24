@@ -12,7 +12,7 @@
 <body>
 <header>
   <a href="index.html"><img src="logo.png" alt="Eleven Jersey" class="logo"></a>
-  <a href="add.html" class="button">Add a kit</a>
+  <a href="add.html" class="button">Add jersey</a>
 </header>
 <form id="search">
   <input name="team" list="teams" placeholder="Club or national team" autocomplete="off">
@@ -68,12 +68,13 @@ async function showSeason(team, season) {
   try {
     const title = await wiki.findSeasonPage(team, season);
     if (!title) { seasonBox.textContent = 'No Wikipedia season page for this team and season.'; return; }
-    const info = await wiki.seasonInfo(title);
-    const parts = info.competitions.map(c => `<b>${esc(c.name)}</b> ${esc(c.result)}`);
-    if (info.topScorer) parts.push(`<b>Top scorer</b> ${esc(info.topScorer)}`);
-    seasonBox.innerHTML = parts.join(' · ') + ` · <a href="${info.url}" target="_blank" rel="noopener">Wikipedia</a>`;
+    seasonBox.innerHTML = seasonHtml(await wiki.seasonInfo(title));
   } catch (e) { seasonBox.textContent = 'Wikipedia did not answer: ' + e.message; }
 }
+
+const seasonHtml = info => [...info.competitions.map(c => `<b>${esc(c.name)}</b> ${esc(c.result)}`),
+  info.topScorer && `<b>Top scorer</b> ${esc(info.topScorer)}`,
+  `<a href="${info.url}" target="_blank" rel="noopener">Wikipedia</a>`].filter(Boolean).join(' · ');
 
 // Wikipedia's drawing of a kit, for a card without a photo; '' when the season page or the kit is missing.
 async function drawing(k) {
@@ -124,12 +125,15 @@ function open(i) {
     <h2>${esc(k.team)} <span>${esc(k.season || '')} ${esc(k.kit || '')}</span></h2>
     ${k.description ? `<p>${esc(k.description)}</p>` : ''}
     <dl>${rows.map(([n, v]) => `<dt>${n}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
+    <p class="season"></p>
     <p class="links">
       ${k.link ? `<a href="${esc(k.link)}" target="_blank" rel="noopener">Item page</a>` : ''}
       ${k.season ? `<a href="https://www.footballkitarchive.com/${slug(k.team)}-${wiki.fullSeason(k.season).replace('–', '-')}-kits/" target="_blank" rel="noopener">Football Kit Archive</a>` : ''}
     </p>`;
   detail.showModal();
   if (!k.photo) drawing(k).then(html => { detail.querySelector('.nophoto').innerHTML = html; });
+  if (k.season) wiki.findSeasonPage(k.team, k.season).then(t => t && wiki.seasonInfo(t))
+    .then(info => { if (info && detail.open) detail.querySelector('.season').innerHTML = seasonHtml(info); }).catch(() => {});
 }
 
 fetch('kits.json').then(r => r.json()).then(data => {

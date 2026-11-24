@@ -32,24 +32,31 @@
   <label>Club or national team *<input name="team" list="teams" required autocomplete="off"></label>
   <label>Country<input name="country" list="countries" autocomplete="off"><small id="countryHint"></small></label>
   <div class="row">
-    <div><label>Season *<input name="season" list="seasons" placeholder="25/26 or 2014" required autocomplete="off"></label></div>
+    <div><label>Season *<input name="season" list="seasons" required autocomplete="off"><small id="seasonHint"></small></label></div>
     <div><label>Kit *<select name="kit" required>
       <option value="">—</option><option>home</option><option>away</option><option>third</option><option>fourth</option>
       <option>special</option><option>training</option><option>goalkeeper</option></select></label></div>
   </div>
   <div class="row">
     <div><label>Brand<input name="brand" list="brands" autocomplete="off"></label></div>
-    <div><label>Version<select name="version"><option value=""></option><option>authentic</option><option>fan</option><option>replica</option></select></label></div>
+    <div><label>Version<select name="version">
+      <option value=""></option>
+      <option value="player issue">Player issue (authentic)</option>
+      <option value="replica">Replica (fan version)</option>
+      <option value="match worn">Match worn</option>
+      <option value="match issued">Match issued, unworn</option>
+      <option value="retro">Retro reissue</option>
+      <option value="unofficial">Unofficial copy</option></select></label></div>
   </div>
   <div class="row">
-    <div><label>Size<select name="size"><option value=""></option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option></select></label></div>
+    <div><label>Size<select name="size"><option value=""></option><option>Kids</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option></select></label></div>
     <div><label>Status *<select name="status" required><option value="yes">in collection</option><option value="wishlist">wishlist</option><option value="bought">bought, on its way</option></select></label></div>
   </div>
   <div class="row">
     <div><label>Number<input name="number" inputmode="numeric" autocomplete="off"></label></div>
     <div><label>Player<input name="player" autocomplete="off"><small id="playerHint"></small></label></div>
   </div>
-  <label>Description<textarea name="description" placeholder="What the kit shows, from the club's or brand's own site"></textarea></label>
+  <label>Description<textarea name="description" placeholder="What the shirt is about: the idea behind the design, references, easter eggs"></textarea></label>
   <label>Notes<input name="comment"></label>
   <label>Photo<input name="photo" type="file" accept="image/*"></label>
   <datalist id="teams"></datalist><datalist id="countries"></datalist><datalist id="seasons"></datalist><datalist id="brands"></datalist>
@@ -63,28 +70,58 @@ const REPO = 'petr-gerasimov/jersey-collection';
 const form = document.getElementById('add');
 const result = document.getElementById('result');
 const countryHint = document.getElementById('countryHint');
+const seasonHint = document.getElementById('seasonHint');
 const playerHint = document.getElementById('playerHint');
 const forget = document.getElementById('forget');
-let kits = [];
+let kits = [], teams = [];
 
 const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const uniq = a => [...new Set(a.filter(Boolean))].sort();
-function fill(id, values) { document.getElementById(id).innerHTML = uniq(values).map(v => `<option value="${v}">`).join(''); }
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+function fill(id, values) { document.getElementById(id).innerHTML = values.map(v => `<option value="${esc(v)}">`).join(''); }
 
-fetch('kits.json').then(r => r.json()).then(data => {
-  kits = data;
-  fill('teams', kits.map(k => k.team)); fill('countries', kits.map(k => k.country));
-  fill('seasons', kits.map(k => k.season)); fill('brands', kits.map(k => k.brand));
+Promise.all([fetch('kits.json').then(r => r.json()), fetch('teams.json').then(r => r.json())]).then(([k, t]) => {
+  kits = k; teams = t;
+  fill('teams', uniq([...teams.map(x => x.name), ...kits.map(x => x.team)]));
+  fill('countries', uniq([...teams.map(x => x.country), ...kits.map(x => x.country)]));
+  fill('brands', uniq(kits.map(x => x.brand)));
+  seasonList();
 });
 forget.hidden = !localStorage.getItem('gh_token');
 
-// Country and brand come from the kits already in the collection; a new club's country from Wikidata.
+const known = name => teams.find(t => t.name.toLowerCase() === name.toLowerCase());
+const isNational = name => !!known(name)?.national;
+
+// Leagues that play spring to autumn name a season by one year; the rest by two, 2023-24.
+const CALENDAR_YEAR = ['Sweden', 'Norway', 'Finland', 'Iceland', 'Ireland', 'Estonia', 'Latvia', 'Lithuania', 'Belarus', 'Kazakhstan',
+  'Japan', 'South Korea', 'China', 'United States', 'Canada', 'Brazil', 'Argentina', 'Chile', 'Colombia', 'Peru', 'Ecuador', 'Uruguay', 'Paraguay', 'Bolivia', 'Venezuela'];
+const seasonStyle = () => isNational(form.team.value.trim()) || CALENDAR_YEAR.includes(form.country.value.trim()) ? 'year' : 'split';
+function seasonList() {
+  const y = new Date().getFullYear(), years = Array.from({ length: y - 1949 }, (_, i) => y - i);
+  const split = seasonStyle() === 'split';
+  fill('seasons', years.map(n => split ? `${n}-${String(n + 1).slice(2)}` : String(n)));
+  form.season.placeholder = split ? `${y - 1}-${String(y).slice(2)}` : String(y - 1);
+  seasonHint.textContent = split ? 'autumn–spring season: two years, 2023-24' : 'one year: a national team or a spring–autumn league';
+}
+function checkSeason() {
+  const s = form.season.value.trim(), m = s.match(/^(\d{4})(?:-(\d{2}))?$/);
+  let error = '';
+  if (!m) error = 'Season is 2023-24 or 2024';
+  else if (m[2] && (Number(m[1]) + 1) % 100 !== Number(m[2])) error = 'The second year must follow the first: 2023-24';
+  // shortcut: Russia played spring–autumn until 2011, so both forms pass there; refine when another such country shows up
+  else if (seasonStyle() === 'split' && !m[2] && form.country.value.trim() !== 'Russia') error = 'This league names a season by two years: 2023-24';
+  else if (seasonStyle() === 'year' && m[2]) error = 'A national team or a spring–autumn league names a season by one year: 2024';
+  form.season.setCustomValidity(error);
+  return !error;
+}
+
+// Country and brand come from the teams list and the kits already in the collection; a new club's country from Wikidata.
 async function autofill() {
   const team = form.team.value.trim(), season = form.season.value.trim();
   const same = kits.filter(k => k.team.toLowerCase() === team.toLowerCase());
   if (!form.country.value && team) {
-    const known = same.find(k => k.country)?.country;
-    if (known) { form.country.value = known; countryHint.textContent = 'from the collection'; }
+    const k = known(team)?.country || same.find(k => k.country)?.country;
+    if (k) { form.country.value = k; countryHint.textContent = known(team) ? 'from the teams list' : 'from the collection'; }
     else {
       countryHint.textContent = 'asking Wikidata…';
       try { form.country.value = await wiki.country(team); countryHint.textContent = form.country.value ? 'from Wikidata, check it' : 'not found, type it'; }
@@ -92,25 +129,33 @@ async function autofill() {
     }
   }
   if (!form.brand.value) form.brand.value = (same.find(k => k.season === season && k.brand) || same.slice(-1)[0])?.brand || '';
+  seasonList();
 }
 
 // The player comes from the squad table on the club's Wikipedia season page.
+let lookup = 0;
 async function playerByNumber() {
-  const team = form.team.value.trim(), season = form.season.value.trim(), n = form.number.value.trim();
+  const team = form.team.value.trim(), season = form.season.value.trim(), n = form.number.value.trim(), id = ++lookup;
   if (!(team && season && n)) return;
+  if (isNational(team)) { playerHint.textContent = 'no squad list for national teams, type the name'; return; }
   playerHint.textContent = 'looking up the squad on Wikipedia…';
   try {
     const title = await wiki.findSeasonPage(team, season);
+    if (id !== lookup) return;
     if (!title) { playerHint.textContent = 'no Wikipedia season page, type the name'; return; }
     const name = (await wiki.seasonInfo(title)).squad[n];
+    if (id !== lookup) return;
     if (name) { form.player.value = name; playerHint.textContent = `from ${title}, check it`; }
     else playerHint.textContent = `number ${n} is not in the squad on ${title}`;
   } catch (e) { playerHint.textContent = 'Wikipedia did not answer: ' + e.message; }
 }
+let timer;
+const soon = fn => { clearTimeout(timer); timer = setTimeout(fn, 500); };
 form.team.addEventListener('change', autofill);
-form.season.addEventListener('change', autofill);
-form.number.addEventListener('change', playerByNumber);
-form.season.addEventListener('change', playerByNumber);
+form.country.addEventListener('change', seasonList);
+form.season.addEventListener('change', () => { autofill(); checkSeason(); playerByNumber(); });
+form.season.addEventListener('input', () => form.season.setCustomValidity(''));
+form.number.addEventListener('input', () => soon(playerByNumber));
 
 const b64 = bytes => btoa(String.fromCharCode(...bytes));
 const utf8 = s => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\n/g, '')), c => c.charCodeAt(0)));
@@ -128,19 +173,20 @@ function record() {
     if (v) kit[key] = v;
   }
   const photo = form.photo.files[0];
-  if (photo) kit.photo = [slug(kit.team), slug(kit.season), kit.kit, Date.now().toString(36)].join('-') + '.' + (photo.name.split('.').pop() || 'jpg').toLowerCase();
+  if (photo) kit.photo = [slug(kit.team), kit.season, kit.kit, Date.now().toString(36)].join('-') + '.' + (photo.name.split('.').pop() || 'jpg').toLowerCase();
   return kit;
 }
 
 form.addEventListener('submit', async e => {
   e.preventDefault();
+  if (!checkSeason()) { form.season.reportValidity(); return; }
   const kit = record();
   if (!localStorage.getItem('gh_token')) {
     const t = prompt('GitHub token with write access to the repository (fine-grained, Contents: read and write). It stays in this browser only. Leave empty to get the JSON to paste by hand.');
     if (t) { localStorage.setItem('gh_token', t.trim()); forget.hidden = false; }
   }
   if (!localStorage.getItem('gh_token')) {
-    result.innerHTML = `Add this to kits.json${kit.photo ? ` and put the photo in photos/${kit.photo}` : ''}:<br><textarea readonly>${JSON.stringify(kit, null, 1)}</textarea>`;
+    result.innerHTML = `Add this to kits.json${kit.photo ? ` and put the photo in photos/${esc(kit.photo)}` : ''}:<br><textarea readonly>${esc(JSON.stringify(kit, null, 1))}</textarea>`;
     return;
   }
   result.textContent = 'Saving…';
@@ -156,8 +202,8 @@ form.addEventListener('submit', async e => {
     const body = new TextEncoder().encode(JSON.stringify(all, null, 1));
     await gh('kits.json', { method: 'PUT', body: JSON.stringify({ message: `Add ${kit.team} ${kit.season} ${kit.kit}`, content: b64(body), sha: cur.sha }) });
     kits = all;
-    result.innerHTML = `Saved: <b>${kit.team} ${kit.season} ${kit.kit}</b>. The site updates in about a minute. <a href="index.html">Collection</a>`;
-    form.reset(); countryHint.textContent = playerHint.textContent = '';
+    result.innerHTML = `Saved: <b>${esc(kit.team)} ${esc(kit.season)} ${esc(kit.kit)}</b>. The site updates in about a minute. <a href="index.html">Collection</a>`;
+    form.reset(); countryHint.textContent = playerHint.textContent = ''; seasonList();
   } catch (err) { result.textContent = 'Not saved. ' + err.message; }
 });
 forget.addEventListener('click', () => { localStorage.removeItem('gh_token'); forget.hidden = true; });

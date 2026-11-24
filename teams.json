@@ -1,0 +1,3417 @@
+[
+{
+"name": "Arsenal",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "Aston Villa",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "Bournemouth",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "Brentford",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "Brighton & Hove Albion",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "Burnley",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "Chelsea",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "Crystal Palace",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "Everton",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "Fulham",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "Leeds United",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "Liverpool",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "Manchester City",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "Manchester United",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "Newcastle United",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "Nottingham Forest",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "Sunderland",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "Tottenham Hotspur",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "West Ham United",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "Wolverhampton Wanderers",
+"country": "England",
+"league": "Premier League"
+},
+{
+"name": "Birmingham City",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Blackburn Rovers",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Bristol City",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Charlton Athletic",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Coventry City",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Derby County",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Hull City",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Ipswich Town",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Leicester City",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Middlesbrough",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Millwall",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Norwich City",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Oxford United",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Portsmouth",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Preston North End",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Queens Park Rangers",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Sheffield United",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Sheffield Wednesday",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Southampton",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Stoke City",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Swansea City",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Watford",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "West Bromwich Albion",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "Wrexham",
+"country": "England",
+"league": "EFL Championship"
+},
+{
+"name": "AFC Wimbledon",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Barnsley",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Blackpool",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Bolton Wanderers",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Bradford City",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Burton Albion",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Cardiff City",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Doncaster Rovers",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Exeter City",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Huddersfield Town",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Leyton Orient",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Lincoln City",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Luton Town",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Mansfield Town",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Northampton Town",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Peterborough United",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Plymouth Argyle",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Port Vale",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Reading",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Rotherham United",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Stevenage",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Stockport County",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Wigan Athletic",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Wycombe Wanderers",
+"country": "England",
+"league": "EFL League One"
+},
+{
+"name": "Accrington Stanley",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Barnet",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Barrow",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Bristol Rovers",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Bromley",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Cambridge United",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Cheltenham Town",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Chesterfield",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Colchester United",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Crawley Town",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Crewe Alexandra",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Fleetwood Town",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Gillingham",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Grimsby Town",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Harrogate Town",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Milton Keynes Dons",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Newport County",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Notts County",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Oldham Athletic",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Salford City",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Shrewsbury Town",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Swindon Town",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Tranmere Rovers",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Walsall",
+"country": "England",
+"league": "EFL League Two"
+},
+{
+"name": "Aldershot Town",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Altrincham",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Boreham Wood",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Boston United",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Brackley Town",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Braintree Town",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Carlisle United",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Eastleigh",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "FC Halifax Town",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Forest Green Rovers",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Gateshead",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Hartlepool United",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Morecambe",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Rochdale",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Scunthorpe United",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Solihull Moors",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Southend United",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Sutton United",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Tamworth",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Truro City",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Wealdstone",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Woking",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "Yeovil Town",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "York City",
+"country": "England",
+"league": "National League"
+},
+{
+"name": "FC Augsburg",
+"country": "Germany",
+"league": "Bundesliga"
+},
+{
+"name": "Union Berlin",
+"country": "Germany",
+"league": "Bundesliga"
+},
+{
+"name": "Werder Bremen",
+"country": "Germany",
+"league": "Bundesliga"
+},
+{
+"name": "Borussia Dortmund",
+"country": "Germany",
+"league": "Bundesliga"
+},
+{
+"name": "Eintracht Frankfurt",
+"country": "Germany",
+"league": "Bundesliga"
+},
+{
+"name": "SC Freiburg",
+"country": "Germany",
+"league": "Bundesliga"
+},
+{
+"name": "Hamburger SV",
+"country": "Germany",
+"league": "Bundesliga"
+},
+{
+"name": "1. FC Heidenheim",
+"country": "Germany",
+"league": "Bundesliga"
+},
+{
+"name": "TSG Hoffenheim",
+"country": "Germany",
+"league": "Bundesliga"
+},
+{
+"name": "1. FC Köln",
+"country": "Germany",
+"league": "Bundesliga"
+},
+{
+"name": "RB Leipzig",
+"country": "Germany",
+"league": "Bundesliga"
+},
+{
+"name": "Bayer Leverkusen",
+"country": "Germany",
+"league": "Bundesliga"
+},
+{
+"name": "Mainz 05",
+"country": "Germany",
+"league": "Bundesliga"
+},
+{
+"name": "Borussia Mönchengladbach",
+"country": "Germany",
+"league": "Bundesliga"
+},
+{
+"name": "Bayern Munich",
+"country": "Germany",
+"league": "Bundesliga"
+},
+{
+"name": "FC St. Pauli",
+"country": "Germany",
+"league": "Bundesliga"
+},
+{
+"name": "VfB Stuttgart",
+"country": "Germany",
+"league": "Bundesliga"
+},
+{
+"name": "VfL Wolfsburg",
+"country": "Germany",
+"league": "Bundesliga"
+},
+{
+"name": "Hertha BSC",
+"country": "Germany",
+"league": "2. Bundesliga"
+},
+{
+"name": "Arminia Bielefeld",
+"country": "Germany",
+"league": "2. Bundesliga"
+},
+{
+"name": "VfL Bochum",
+"country": "Germany",
+"league": "2. Bundesliga"
+},
+{
+"name": "Eintracht Braunschweig",
+"country": "Germany",
+"league": "2. Bundesliga"
+},
+{
+"name": "Darmstadt 98",
+"country": "Germany",
+"league": "2. Bundesliga"
+},
+{
+"name": "Dynamo Dresden",
+"country": "Germany",
+"league": "2. Bundesliga"
+},
+{
+"name": "Fortuna Düsseldorf",
+"country": "Germany",
+"league": "2. Bundesliga"
+},
+{
+"name": "SV Elversberg",
+"country": "Germany",
+"league": "2. Bundesliga"
+},
+{
+"name": "Greuther Fürth",
+"country": "Germany",
+"league": "2. Bundesliga"
+},
+{
+"name": "Hannover 96",
+"country": "Germany",
+"league": "2. Bundesliga"
+},
+{
+"name": "1. FC Kaiserslautern",
+"country": "Germany",
+"league": "2. Bundesliga"
+},
+{
+"name": "Karlsruher SC",
+"country": "Germany",
+"league": "2. Bundesliga"
+},
+{
+"name": "Holstein Kiel",
+"country": "Germany",
+"league": "2. Bundesliga"
+},
+{
+"name": "1. FC Magdeburg",
+"country": "Germany",
+"league": "2. Bundesliga"
+},
+{
+"name": "Preußen Münster",
+"country": "Germany",
+"league": "2. Bundesliga"
+},
+{
+"name": "1. FC Nürnberg",
+"country": "Germany",
+"league": "2. Bundesliga"
+},
+{
+"name": "SC Paderborn",
+"country": "Germany",
+"league": "2. Bundesliga"
+},
+{
+"name": "Schalke 04",
+"country": "Germany",
+"league": "2. Bundesliga"
+},
+{
+"name": "Alemannia Aachen",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "Erzgebirge Aue",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "Energie Cottbus",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "MSV Duisburg",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "Rot-Weiss Essen",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "TSV Havelse",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "TSG Hoffenheim II",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "FC Ingolstadt",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "Viktoria Köln",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "Waldhof Mannheim",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "1860 Munich",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "VfL Osnabrück",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "Jahn Regensburg",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "Hansa Rostock",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "1. FC Saarbrücken",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "1. FC Schweinfurt",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "VfB Stuttgart II",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "SSV Ulm",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "SC Verl",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "Wehen Wiesbaden",
+"country": "Germany",
+"league": "3. Liga"
+},
+{
+"name": "Atalanta",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "Bologna",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "Cagliari",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "Como",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "Cremonese",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "Fiorentina",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "Genoa",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "Hellas Verona",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "AC Milan",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "Inter Milan",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "Juventus",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "Lazio",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "Roma",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "Lecce",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "Napoli",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "Parma",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "Pisa",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "Sassuolo",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "Torino",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "Udinese",
+"country": "Italy",
+"league": "Serie A"
+},
+{
+"name": "Avellino",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Bari",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Carrarese",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Catanzaro",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Cesena",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Empoli",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Frosinone",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Juve Stabia",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Mantova",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Modena",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Monza",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Padova",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Palermo",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Pescara",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Reggiana",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Sampdoria",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Spezia",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Südtirol",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Venezia",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Virtus Entella",
+"country": "Italy",
+"league": "Serie B"
+},
+{
+"name": "Alavés",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Athletic Bilbao",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Atlético Madrid",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Barcelona",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Barcelona",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Camp Nou",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Celta Vigo",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Elche",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Espanyol",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Getafe",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Girona",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Levante",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Mallorca",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Osasuna",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Oviedo",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Rayo Vallecano",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Leganés",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Real Betis",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Real Madrid",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Real Sociedad",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Sevilla",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Valencia",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Villarreal",
+"country": "Spain",
+"league": "La Liga"
+},
+{
+"name": "Albacete",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Almería",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Andorra",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Burgos",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Cádiz",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Castellón",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Ceuta",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Córdoba",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Cultural Leonesa",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Deportivo La Coruña",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Eibar",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Granada",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Huesca",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Las Palmas",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Leganés",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Málaga",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Mirandés",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Vitoria-Gasteiz",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Racing Santander",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Real Sociedad B",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "San Sebastián",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Sporting Gijón",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Valladolid",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Zaragoza",
+"country": "Spain",
+"league": "Segunda División"
+},
+{
+"name": "Angers",
+"country": "France",
+"league": "Ligue 1"
+},
+{
+"name": "Auxerre",
+"country": "France",
+"league": "Ligue 1"
+},
+{
+"name": "Brest",
+"country": "France",
+"league": "Ligue 1"
+},
+{
+"name": "Le Havre",
+"country": "France",
+"league": "Ligue 1"
+},
+{
+"name": "Lens",
+"country": "France",
+"league": "Ligue 1"
+},
+{
+"name": "Lille",
+"country": "France",
+"league": "Ligue 1"
+},
+{
+"name": "Lorient",
+"country": "France",
+"league": "Ligue 1"
+},
+{
+"name": "Lyon",
+"country": "France",
+"league": "Ligue 1"
+},
+{
+"name": "Marseille",
+"country": "France",
+"league": "Ligue 1"
+},
+{
+"name": "Metz",
+"country": "France",
+"league": "Ligue 1"
+},
+{
+"name": "Monaco",
+"country": "France",
+"league": "Ligue 1"
+},
+{
+"name": "Nantes",
+"country": "France",
+"league": "Ligue 1"
+},
+{
+"name": "Nice",
+"country": "France",
+"league": "Ligue 1"
+},
+{
+"name": "Paris FC",
+"country": "France",
+"league": "Ligue 1"
+},
+{
+"name": "Paris Saint-Germain",
+"country": "France",
+"league": "Ligue 1"
+},
+{
+"name": "Rennes",
+"country": "France",
+"league": "Ligue 1"
+},
+{
+"name": "Strasbourg",
+"country": "France",
+"league": "Ligue 1"
+},
+{
+"name": "Toulouse",
+"country": "France",
+"league": "Ligue 1"
+},
+{
+"name": "Amiens",
+"country": "France",
+"league": "Ligue 2"
+},
+{
+"name": "Annecy",
+"country": "France",
+"league": "Ligue 2"
+},
+{
+"name": "Bastia",
+"country": "France",
+"league": "Ligue 2"
+},
+{
+"name": "Boulogne",
+"country": "France",
+"league": "Ligue 2"
+},
+{
+"name": "Clermont",
+"country": "France",
+"league": "Ligue 2"
+},
+{
+"name": "Dunkerque",
+"country": "France",
+"league": "Ligue 2"
+},
+{
+"name": "Grenoble",
+"country": "France",
+"league": "Ligue 2"
+},
+{
+"name": "Guingamp",
+"country": "France",
+"league": "Ligue 2"
+},
+{
+"name": "Laval",
+"country": "France",
+"league": "Ligue 2"
+},
+{
+"name": "Le Mans",
+"country": "France",
+"league": "Ligue 2"
+},
+{
+"name": "Montpellier",
+"country": "France",
+"league": "Ligue 2"
+},
+{
+"name": "Nancy",
+"country": "France",
+"league": "Ligue 2"
+},
+{
+"name": "Pau",
+"country": "France",
+"league": "Ligue 2"
+},
+{
+"name": "Red Star",
+"country": "France",
+"league": "Ligue 2"
+},
+{
+"name": "Reims",
+"country": "France",
+"league": "Ligue 2"
+},
+{
+"name": "Rodez",
+"country": "France",
+"league": "Ligue 2"
+},
+{
+"name": "Saint-Étienne",
+"country": "France",
+"league": "Ligue 2"
+},
+{
+"name": "Troyes",
+"country": "France",
+"league": "Ligue 2"
+},
+{
+"name": "Ajax",
+"country": "Netherlands",
+"league": "Eredivisie"
+},
+{
+"name": "AZ",
+"country": "Netherlands",
+"league": "Eredivisie"
+},
+{
+"name": "Excelsior",
+"country": "Netherlands",
+"league": "Eredivisie"
+},
+{
+"name": "Feyenoord",
+"country": "Netherlands",
+"league": "Eredivisie"
+},
+{
+"name": "Fortuna Sittard",
+"country": "Netherlands",
+"league": "Eredivisie"
+},
+{
+"name": "Go Ahead Eagles",
+"country": "Netherlands",
+"league": "Eredivisie"
+},
+{
+"name": "Groningen",
+"country": "Netherlands",
+"league": "Eredivisie"
+},
+{
+"name": "Heerenveen",
+"country": "Netherlands",
+"league": "Eredivisie"
+},
+{
+"name": "Heracles Almelo",
+"country": "Netherlands",
+"league": "Eredivisie"
+},
+{
+"name": "NAC Breda",
+"country": "Netherlands",
+"league": "Eredivisie"
+},
+{
+"name": "NEC",
+"country": "Netherlands",
+"league": "Eredivisie"
+},
+{
+"name": "PEC Zwolle",
+"country": "Netherlands",
+"league": "Eredivisie"
+},
+{
+"name": "PSV Eindhoven",
+"country": "Netherlands",
+"league": "Eredivisie"
+},
+{
+"name": "Sparta Rotterdam",
+"country": "Netherlands",
+"league": "Eredivisie"
+},
+{
+"name": "Telstar",
+"country": "Netherlands",
+"league": "Eredivisie"
+},
+{
+"name": "Twente",
+"country": "Netherlands",
+"league": "Eredivisie"
+},
+{
+"name": "Utrecht",
+"country": "Netherlands",
+"league": "Eredivisie"
+},
+{
+"name": "Volendam",
+"country": "Netherlands",
+"league": "Eredivisie"
+},
+{
+"name": "ADO Den Haag",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "Almere City",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "Cambuur",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "De Graafschap",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "Den Bosch",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "Dordrecht",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "Eindhoven",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "Emmen",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "Helmond Sport",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "Jong Ajax",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "Jong AZ",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "Jong PSV",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "Jong FC Utrecht",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "MVV Maastricht",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "RKC Waalwijk",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "Roda JC Kerkrade",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "TOP Oss",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "Vitesse",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "VVV-Venlo",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "Willem II",
+"country": "Netherlands",
+"league": "Eerste Divisie"
+},
+{
+"name": "Alverca",
+"country": "Portugal",
+"league": "Primeira Liga"
+},
+{
+"name": "Arouca",
+"country": "Portugal",
+"league": "Primeira Liga"
+},
+{
+"name": "AVS",
+"country": "Portugal",
+"league": "Primeira Liga"
+},
+{
+"name": "Benfica",
+"country": "Portugal",
+"league": "Primeira Liga"
+},
+{
+"name": "Braga",
+"country": "Portugal",
+"league": "Primeira Liga"
+},
+{
+"name": "Casa Pia",
+"country": "Portugal",
+"league": "Primeira Liga"
+},
+{
+"name": "Estoril Praia",
+"country": "Portugal",
+"league": "Primeira Liga"
+},
+{
+"name": "Estrela da Amadora",
+"country": "Portugal",
+"league": "Primeira Liga"
+},
+{
+"name": "Famalicão",
+"country": "Portugal",
+"league": "Primeira Liga"
+},
+{
+"name": "Gil Vicente",
+"country": "Portugal",
+"league": "Primeira Liga"
+},
+{
+"name": "Moreirense",
+"country": "Portugal",
+"league": "Primeira Liga"
+},
+{
+"name": "Nacional",
+"country": "Portugal",
+"league": "Primeira Liga"
+},
+{
+"name": "Porto",
+"country": "Portugal",
+"league": "Primeira Liga"
+},
+{
+"name": "Rio Ave",
+"country": "Portugal",
+"league": "Primeira Liga"
+},
+{
+"name": "Santa Clara",
+"country": "Portugal",
+"league": "Primeira Liga"
+},
+{
+"name": "Sporting CP",
+"country": "Portugal",
+"league": "Primeira Liga"
+},
+{
+"name": "Tondela",
+"country": "Portugal",
+"league": "Primeira Liga"
+},
+{
+"name": "Vitória de Guimarães",
+"country": "Portugal",
+"league": "Primeira Liga"
+},
+{
+"name": "Académico de Viseu",
+"country": "Portugal",
+"league": "Liga Portugal 2"
+},
+{
+"name": "Benfica B",
+"country": "Portugal",
+"league": "Liga Portugal 2"
+},
+{
+"name": "Chaves",
+"country": "Portugal",
+"league": "Liga Portugal 2"
+},
+{
+"name": "Farense",
+"country": "Portugal",
+"league": "Liga Portugal 2"
+},
+{
+"name": "Feirense",
+"country": "Portugal",
+"league": "Liga Portugal 2"
+},
+{
+"name": "Felgueiras",
+"country": "Portugal",
+"league": "Liga Portugal 2"
+},
+{
+"name": "Leixões",
+"country": "Portugal",
+"league": "Liga Portugal 2"
+},
+{
+"name": "Lusitânia Lourosa",
+"country": "Portugal",
+"league": "Liga Portugal 2"
+},
+{
+"name": "Marítimo",
+"country": "Portugal",
+"league": "Liga Portugal 2"
+},
+{
+"name": "Oliveirense",
+"country": "Portugal",
+"league": "Liga Portugal 2"
+},
+{
+"name": "Paços de Ferreira",
+"country": "Portugal",
+"league": "Liga Portugal 2"
+},
+{
+"name": "Penafiel",
+"country": "Portugal",
+"league": "Liga Portugal 2"
+},
+{
+"name": "Portimonense",
+"country": "Portugal",
+"league": "Liga Portugal 2"
+},
+{
+"name": "Porto B",
+"country": "Portugal",
+"league": "Liga Portugal 2"
+},
+{
+"name": "Sporting CP B",
+"country": "Portugal",
+"league": "Liga Portugal 2"
+},
+{
+"name": "Torreense",
+"country": "Portugal",
+"league": "Liga Portugal 2"
+},
+{
+"name": "União de Leiria",
+"country": "Portugal",
+"league": "Liga Portugal 2"
+},
+{
+"name": "Vizela",
+"country": "Portugal",
+"league": "Liga Portugal 2"
+},
+{
+"name": "Anderlecht",
+"country": "Belgium",
+"league": "Belgian Pro League"
+},
+{
+"name": "Antwerp",
+"country": "Belgium",
+"league": "Belgian Pro League"
+},
+{
+"name": "Cercle Brugge",
+"country": "Belgium",
+"league": "Belgian Pro League"
+},
+{
+"name": "Charleroi",
+"country": "Belgium",
+"league": "Belgian Pro League"
+},
+{
+"name": "Club Brugge",
+"country": "Belgium",
+"league": "Belgian Pro League"
+},
+{
+"name": "Dender EH",
+"country": "Belgium",
+"league": "Belgian Pro League"
+},
+{
+"name": "Genk",
+"country": "Belgium",
+"league": "Belgian Pro League"
+},
+{
+"name": "Gent",
+"country": "Belgium",
+"league": "Belgian Pro League"
+},
+{
+"name": "La Louvière",
+"country": "Belgium",
+"league": "Belgian Pro League"
+},
+{
+"name": "Mechelen",
+"country": "Belgium",
+"league": "Belgian Pro League"
+},
+{
+"name": "OH Leuven",
+"country": "Belgium",
+"league": "Belgian Pro League"
+},
+{
+"name": "Sint-Truiden",
+"country": "Belgium",
+"league": "Belgian Pro League"
+},
+{
+"name": "Standard Liège",
+"country": "Belgium",
+"league": "Belgian Pro League"
+},
+{
+"name": "Union SG",
+"country": "Belgium",
+"league": "Belgian Pro League"
+},
+{
+"name": "Westerlo",
+"country": "Belgium",
+"league": "Belgian Pro League"
+},
+{
+"name": "Zulte Waregem",
+"country": "Belgium",
+"league": "Belgian Pro League"
+},
+{
+"name": "Beveren",
+"country": "Belgium",
+"league": "Challenger Pro League"
+},
+{
+"name": "Kortrijk",
+"country": "Belgium",
+"league": "Challenger Pro League"
+},
+{
+"name": "Beerschot",
+"country": "Belgium",
+"league": "Challenger Pro League"
+},
+{
+"name": "RFC Liège",
+"country": "Belgium",
+"league": "Challenger Pro League"
+},
+{
+"name": "Lommel",
+"country": "Belgium",
+"league": "Challenger Pro League"
+},
+{
+"name": "Patro Eisden Maasmechelen",
+"country": "Belgium",
+"league": "Challenger Pro League"
+},
+{
+"name": "Eupen",
+"country": "Belgium",
+"league": "Challenger Pro League"
+},
+{
+"name": "Lokeren",
+"country": "Belgium",
+"league": "Challenger Pro League"
+},
+{
+"name": "Jong KAA Gent",
+"country": "Belgium",
+"league": "Challenger Pro League"
+},
+{
+"name": "Lierse",
+"country": "Belgium",
+"league": "Challenger Pro League"
+},
+{
+"name": "Seraing",
+"country": "Belgium",
+"league": "Challenger Pro League"
+},
+{
+"name": "Francs Borains",
+"country": "Belgium",
+"league": "Challenger Pro League"
+},
+{
+"name": "RSCA Futures",
+"country": "Belgium",
+"league": "Challenger Pro League"
+},
+{
+"name": "Jong Genk",
+"country": "Belgium",
+"league": "Challenger Pro League"
+},
+{
+"name": "Club NXT",
+"country": "Belgium",
+"league": "Challenger Pro League"
+},
+{
+"name": "Olympic Charleroi",
+"country": "Belgium",
+"league": "Challenger Pro League"
+},
+{
+"name": "RWDM Brussels",
+"country": "Belgium",
+"league": "Challenger Pro League"
+},
+{
+"name": "Alanyaspor",
+"country": "Turkey",
+"league": "Süper Lig"
+},
+{
+"name": "Antalyaspor",
+"country": "Turkey",
+"league": "Süper Lig"
+},
+{
+"name": "Başakşehir",
+"country": "Turkey",
+"league": "Süper Lig"
+},
+{
+"name": "Beşiktaş",
+"country": "Turkey",
+"league": "Süper Lig"
+},
+{
+"name": "Eyüpspor",
+"country": "Turkey",
+"league": "Süper Lig"
+},
+{
+"name": "Fatih Karagümrük",
+"country": "Turkey",
+"league": "Süper Lig"
+},
+{
+"name": "Fenerbahçe",
+"country": "Turkey",
+"league": "Süper Lig"
+},
+{
+"name": "Galatasaray",
+"country": "Turkey",
+"league": "Süper Lig"
+},
+{
+"name": "Gaziantep",
+"country": "Turkey",
+"league": "Süper Lig"
+},
+{
+"name": "Gençlerbirliği",
+"country": "Turkey",
+"league": "Süper Lig"
+},
+{
+"name": "Göztepe",
+"country": "Turkey",
+"league": "Süper Lig"
+},
+{
+"name": "Kasımpaşa",
+"country": "Turkey",
+"league": "Süper Lig"
+},
+{
+"name": "Kayserispor",
+"country": "Turkey",
+"league": "Süper Lig"
+},
+{
+"name": "Kocaelispor",
+"country": "Turkey",
+"league": "Süper Lig"
+},
+{
+"name": "Konyaspor",
+"country": "Turkey",
+"league": "Süper Lig"
+},
+{
+"name": "Rizespor",
+"country": "Turkey",
+"league": "Süper Lig"
+},
+{
+"name": "Samsunspor",
+"country": "Turkey",
+"league": "Süper Lig"
+},
+{
+"name": "Trabzonspor",
+"country": "Turkey",
+"league": "Süper Lig"
+},
+{
+"name": "Adana Demirspor",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "Amedspor",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "Bandırmaspor",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "Bodrum",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "Boluspor",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "Çorum",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "Erzurumspor",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "Esenler Erokspor",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "Hatayspor",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "Iğdır",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "İstanbulspor",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "Keçiörengücü",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "Manisa",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "Pendikspor",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "Sakaryaspor",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "Sarıyer",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "Serikspor",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "Sivasspor",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "Ümraniyespor",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "Vanspor",
+"country": "Turkey",
+"league": "TFF First League"
+},
+{
+"name": "Bohemians 1905",
+"country": "Czech Republic",
+"league": "Czech First League"
+},
+{
+"name": "FK Dukla Prague",
+"country": "Czech Republic",
+"league": "Czech First League"
+},
+{
+"name": "FC Hradec Králové",
+"country": "Czech Republic",
+"league": "Czech First League"
+},
+{
+"name": "FK Jablonec",
+"country": "Czech Republic",
+"league": "Czech First League"
+},
+{
+"name": "MFK Karviná",
+"country": "Czech Republic",
+"league": "Czech First League"
+},
+{
+"name": "FC Slovan Liberec",
+"country": "Czech Republic",
+"league": "Czech First League"
+},
+{
+"name": "FK Mladá Boleslav",
+"country": "Czech Republic",
+"league": "Czech First League"
+},
+{
+"name": "SK Sigma Olomouc",
+"country": "Czech Republic",
+"league": "Czech First League"
+},
+{
+"name": "FC Baník Ostrava",
+"country": "Czech Republic",
+"league": "Czech First League"
+},
+{
+"name": "FK Pardubice",
+"country": "Czech Republic",
+"league": "Czech First League"
+},
+{
+"name": "FC Viktoria Plzeň",
+"country": "Czech Republic",
+"league": "Czech First League"
+},
+{
+"name": "SK Slavia Prague",
+"country": "Czech Republic",
+"league": "Czech First League"
+},
+{
+"name": "1. FC Slovácko",
+"country": "Czech Republic",
+"league": "Czech First League"
+},
+{
+"name": "AC Sparta Prague",
+"country": "Czech Republic",
+"league": "Czech First League"
+},
+{
+"name": "FK Teplice",
+"country": "Czech Republic",
+"league": "Czech First League"
+},
+{
+"name": "FC Zlín",
+"country": "Czech Republic",
+"league": "Czech First League"
+},
+{
+"name": "SK Dynamo České Budějovice",
+"country": "Czech Republic",
+"league": "Czech National Football League"
+},
+{
+"name": "MFK Chrudim",
+"country": "Czech Republic",
+"league": "Czech National Football League"
+},
+{
+"name": "FC Silon Táborsko",
+"country": "Czech Republic",
+"league": "Czech National Football League"
+},
+{
+"name": "AC Sparta Prague B",
+"country": "Czech Republic",
+"league": "Czech National Football League"
+},
+{
+"name": "FC Sellier & Bellot Vlašim",
+"country": "Czech Republic",
+"league": "Czech National Football League"
+},
+{
+"name": "FC Zbrojovka Brno",
+"country": "Czech Republic",
+"league": "Czech National Football League"
+},
+{
+"name": "SK Artis Brno",
+"country": "Czech Republic",
+"league": "Czech National Football League"
+},
+{
+"name": "FK Viktoria Žižkov",
+"country": "Czech Republic",
+"league": "Czech National Football League"
+},
+{
+"name": "FC Vysočina Jihlava",
+"country": "Czech Republic",
+"league": "Czech National Football League"
+},
+{
+"name": "SK Slavia Prague B",
+"country": "Czech Republic",
+"league": "Czech National Football League"
+},
+{
+"name": "1. SK Prostějov",
+"country": "Czech Republic",
+"league": "Czech National Football League"
+},
+{
+"name": "SFC Opava",
+"country": "Czech Republic",
+"league": "Czech National Football League"
+},
+{
+"name": "FC Baník Ostrava B",
+"country": "Czech Republic",
+"league": "Czech National Football League"
+},
+{
+"name": "FK Viagem Ústí nad Labem",
+"country": "Czech Republic",
+"league": "Czech National Football League"
+},
+{
+"name": "SK Hanácká Slavia Kroměříž",
+"country": "Czech Republic",
+"league": "Czech National Football League"
+},
+{
+"name": "FK Příbram",
+"country": "Czech Republic",
+"league": "Czech National Football League"
+},
+{
+"name": "Afghanistan",
+"country": "Afghanistan",
+"national": true
+},
+{
+"name": "Albania",
+"country": "Albania",
+"national": true
+},
+{
+"name": "Algeria",
+"country": "Algeria",
+"national": true
+},
+{
+"name": "American Samoa",
+"country": "American Samoa",
+"national": true
+},
+{
+"name": "Andorra",
+"country": "Andorra",
+"national": true
+},
+{
+"name": "Angola",
+"country": "Angola",
+"national": true
+},
+{
+"name": "Anguilla",
+"country": "Anguilla",
+"national": true
+},
+{
+"name": "Antigua and Barbuda",
+"country": "Antigua and Barbuda",
+"national": true
+},
+{
+"name": "Argentina",
+"country": "Argentina",
+"national": true
+},
+{
+"name": "Armenia",
+"country": "Armenia",
+"national": true
+},
+{
+"name": "Aruba",
+"country": "Aruba",
+"national": true
+},
+{
+"name": "Australia",
+"country": "Australia",
+"national": true
+},
+{
+"name": "Austria",
+"country": "Austria",
+"national": true
+},
+{
+"name": "Azerbaijan",
+"country": "Azerbaijan",
+"national": true
+},
+{
+"name": "Bahamas",
+"country": "Bahamas",
+"national": true
+},
+{
+"name": "Bahrain",
+"country": "Bahrain",
+"national": true
+},
+{
+"name": "Bangladesh",
+"country": "Bangladesh",
+"national": true
+},
+{
+"name": "Barbados",
+"country": "Barbados",
+"national": true
+},
+{
+"name": "Belarus",
+"country": "Belarus",
+"national": true
+},
+{
+"name": "Belgium",
+"country": "Belgium",
+"national": true
+},
+{
+"name": "Belize",
+"country": "Belize",
+"national": true
+},
+{
+"name": "Benin",
+"country": "Benin",
+"national": true
+},
+{
+"name": "Bermuda",
+"country": "Bermuda",
+"national": true
+},
+{
+"name": "Bhutan",
+"country": "Bhutan",
+"national": true
+},
+{
+"name": "Bolivia",
+"country": "Bolivia",
+"national": true
+},
+{
+"name": "Bosnia and Herzegovina",
+"country": "Bosnia and Herzegovina",
+"national": true
+},
+{
+"name": "Botswana",
+"country": "Botswana",
+"national": true
+},
+{
+"name": "Brazil",
+"country": "Brazil",
+"national": true
+},
+{
+"name": "British Virgin Islands",
+"country": "British Virgin Islands",
+"national": true
+},
+{
+"name": "Brunei",
+"country": "Brunei",
+"national": true
+},
+{
+"name": "Bulgaria",
+"country": "Bulgaria",
+"national": true
+},
+{
+"name": "Burkina Faso",
+"country": "Burkina Faso",
+"national": true
+},
+{
+"name": "Burundi",
+"country": "Burundi",
+"national": true
+},
+{
+"name": "Cambodia",
+"country": "Cambodia",
+"national": true
+},
+{
+"name": "Cameroon",
+"country": "Cameroon",
+"national": true
+},
+{
+"name": "Canada",
+"country": "Canada",
+"national": true
+},
+{
+"name": "Cape Verde",
+"country": "Cape Verde",
+"national": true
+},
+{
+"name": "Cayman Islands",
+"country": "Cayman Islands",
+"national": true
+},
+{
+"name": "Central African Republic",
+"country": "Central African Republic",
+"national": true
+},
+{
+"name": "Chad",
+"country": "Chad",
+"national": true
+},
+{
+"name": "Chile",
+"country": "Chile",
+"national": true
+},
+{
+"name": "China",
+"country": "China",
+"national": true
+},
+{
+"name": "Chinese Taipei",
+"country": "Chinese Taipei",
+"national": true
+},
+{
+"name": "Colombia",
+"country": "Colombia",
+"national": true
+},
+{
+"name": "Comoros",
+"country": "Comoros",
+"national": true
+},
+{
+"name": "Congo",
+"country": "Congo",
+"national": true
+},
+{
+"name": "Cook Islands",
+"country": "Cook Islands",
+"national": true
+},
+{
+"name": "Costa Rica",
+"country": "Costa Rica",
+"national": true
+},
+{
+"name": "Croatia",
+"country": "Croatia",
+"national": true
+},
+{
+"name": "Cuba",
+"country": "Cuba",
+"national": true
+},
+{
+"name": "Curaçao",
+"country": "Curaçao",
+"national": true
+},
+{
+"name": "Cyprus",
+"country": "Cyprus",
+"national": true
+},
+{
+"name": "Czech Republic",
+"country": "Czech Republic",
+"national": true
+},
+{
+"name": "DR Congo",
+"country": "DR Congo",
+"national": true
+},
+{
+"name": "Denmark",
+"country": "Denmark",
+"national": true
+},
+{
+"name": "Djibouti",
+"country": "Djibouti",
+"national": true
+},
+{
+"name": "Dominica",
+"country": "Dominica",
+"national": true
+},
+{
+"name": "Dominican Republic",
+"country": "Dominican Republic",
+"national": true
+},
+{
+"name": "Ecuador",
+"country": "Ecuador",
+"national": true
+},
+{
+"name": "Egypt",
+"country": "Egypt",
+"national": true
+},
+{
+"name": "El Salvador",
+"country": "El Salvador",
+"national": true
+},
+{
+"name": "England",
+"country": "England",
+"national": true
+},
+{
+"name": "Equatorial Guinea",
+"country": "Equatorial Guinea",
+"national": true
+},
+{
+"name": "Eritrea",
+"country": "Eritrea",
+"national": true
+},
+{
+"name": "Estonia",
+"country": "Estonia",
+"national": true
+},
+{
+"name": "Eswatini",
+"country": "Eswatini",
+"national": true
+},
+{
+"name": "Ethiopia",
+"country": "Ethiopia",
+"national": true
+},
+{
+"name": "Faroe Islands",
+"country": "Faroe Islands",
+"national": true
+},
+{
+"name": "Fiji",
+"country": "Fiji",
+"national": true
+},
+{
+"name": "Finland",
+"country": "Finland",
+"national": true
+},
+{
+"name": "France",
+"country": "France",
+"national": true
+},
+{
+"name": "Gabon",
+"country": "Gabon",
+"national": true
+},
+{
+"name": "Gambia",
+"country": "Gambia",
+"national": true
+},
+{
+"name": "Georgia",
+"country": "Georgia",
+"national": true
+},
+{
+"name": "Germany",
+"country": "Germany",
+"national": true
+},
+{
+"name": "Ghana",
+"country": "Ghana",
+"national": true
+},
+{
+"name": "Gibraltar",
+"country": "Gibraltar",
+"national": true
+},
+{
+"name": "Greece",
+"country": "Greece",
+"national": true
+},
+{
+"name": "Grenada",
+"country": "Grenada",
+"national": true
+},
+{
+"name": "Guam",
+"country": "Guam",
+"national": true
+},
+{
+"name": "Guatemala",
+"country": "Guatemala",
+"national": true
+},
+{
+"name": "Guinea",
+"country": "Guinea",
+"national": true
+},
+{
+"name": "Guinea-Bissau",
+"country": "Guinea-Bissau",
+"national": true
+},
+{
+"name": "Guyana",
+"country": "Guyana",
+"national": true
+},
+{
+"name": "Haiti",
+"country": "Haiti",
+"national": true
+},
+{
+"name": "Honduras",
+"country": "Honduras",
+"national": true
+},
+{
+"name": "Hong Kong",
+"country": "Hong Kong",
+"national": true
+},
+{
+"name": "Hungary",
+"country": "Hungary",
+"national": true
+},
+{
+"name": "Iceland",
+"country": "Iceland",
+"national": true
+},
+{
+"name": "India",
+"country": "India",
+"national": true
+},
+{
+"name": "Indonesia",
+"country": "Indonesia",
+"national": true
+},
+{
+"name": "Iran",
+"country": "Iran",
+"national": true
+},
+{
+"name": "Iraq",
+"country": "Iraq",
+"national": true
+},
+{
+"name": "Israel",
+"country": "Israel",
+"national": true
+},
+{
+"name": "Italy",
+"country": "Italy",
+"national": true
+},
+{
+"name": "Ivory Coast",
+"country": "Ivory Coast",
+"national": true
+},
+{
+"name": "Jamaica",
+"country": "Jamaica",
+"national": true
+},
+{
+"name": "Japan",
+"country": "Japan",
+"national": true
+},
+{
+"name": "Jordan",
+"country": "Jordan",
+"national": true
+},
+{
+"name": "Kazakhstan",
+"country": "Kazakhstan",
+"national": true
+},
+{
+"name": "Kenya",
+"country": "Kenya",
+"national": true
+},
+{
+"name": "Kosovo",
+"country": "Kosovo",
+"national": true
+},
+{
+"name": "Kuwait",
+"country": "Kuwait",
+"national": true
+},
+{
+"name": "Kyrgyzstan",
+"country": "Kyrgyzstan",
+"national": true
+},
+{
+"name": "Laos",
+"country": "Laos",
+"national": true
+},
+{
+"name": "Latvia",
+"country": "Latvia",
+"national": true
+},
+{
+"name": "Lebanon",
+"country": "Lebanon",
+"national": true
+},
+{
+"name": "Lesotho",
+"country": "Lesotho",
+"national": true
+},
+{
+"name": "Liberia",
+"country": "Liberia",
+"national": true
+},
+{
+"name": "Libya",
+"country": "Libya",
+"national": true
+},
+{
+"name": "Liechtenstein",
+"country": "Liechtenstein",
+"national": true
+},
+{
+"name": "Lithuania",
+"country": "Lithuania",
+"national": true
+},
+{
+"name": "Luxembourg",
+"country": "Luxembourg",
+"national": true
+},
+{
+"name": "Macau",
+"country": "Macau",
+"national": true
+},
+{
+"name": "Madagascar",
+"country": "Madagascar",
+"national": true
+},
+{
+"name": "Malawi",
+"country": "Malawi",
+"national": true
+},
+{
+"name": "Malaysia",
+"country": "Malaysia",
+"national": true
+},
+{
+"name": "Maldives",
+"country": "Maldives",
+"national": true
+},
+{
+"name": "Mali",
+"country": "Mali",
+"national": true
+},
+{
+"name": "Malta",
+"country": "Malta",
+"national": true
+},
+{
+"name": "Mauritania",
+"country": "Mauritania",
+"national": true
+},
+{
+"name": "Mauritius",
+"country": "Mauritius",
+"national": true
+},
+{
+"name": "Mexico",
+"country": "Mexico",
+"national": true
+},
+{
+"name": "Moldova",
+"country": "Moldova",
+"national": true
+},
+{
+"name": "Mongolia",
+"country": "Mongolia",
+"national": true
+},
+{
+"name": "Montenegro",
+"country": "Montenegro",
+"national": true
+},
+{
+"name": "Montserrat",
+"country": "Montserrat",
+"national": true
+},
+{
+"name": "Morocco",
+"country": "Morocco",
+"national": true
+},
+{
+"name": "Mozambique",
+"country": "Mozambique",
+"national": true
+},
+{
+"name": "Myanmar",
+"country": "Myanmar",
+"national": true
+},
+{
+"name": "Namibia",
+"country": "Namibia",
+"national": true
+},
+{
+"name": "Nepal",
+"country": "Nepal",
+"national": true
+},
+{
+"name": "Netherlands",
+"country": "Netherlands",
+"national": true
+},
+{
+"name": "New Caledonia",
+"country": "New Caledonia",
+"national": true
+},
+{
+"name": "New Zealand",
+"country": "New Zealand",
+"national": true
+},
+{
+"name": "Nicaragua",
+"country": "Nicaragua",
+"national": true
+},
+{
+"name": "Niger",
+"country": "Niger",
+"national": true
+},
+{
+"name": "Nigeria",
+"country": "Nigeria",
+"national": true
+},
+{
+"name": "North Korea",
+"country": "North Korea",
+"national": true
+},
+{
+"name": "North Macedonia",
+"country": "North Macedonia",
+"national": true
+},
+{
+"name": "Northern Ireland",
+"country": "Northern Ireland",
+"national": true
+},
+{
+"name": "Norway",
+"country": "Norway",
+"national": true
+},
+{
+"name": "Oman",
+"country": "Oman",
+"national": true
+},
+{
+"name": "Pakistan",
+"country": "Pakistan",
+"national": true
+},
+{
+"name": "Palestine",
+"country": "Palestine",
+"national": true
+},
+{
+"name": "Panama",
+"country": "Panama",
+"national": true
+},
+{
+"name": "Papua New Guinea",
+"country": "Papua New Guinea",
+"national": true
+},
+{
+"name": "Paraguay",
+"country": "Paraguay",
+"national": true
+},
+{
+"name": "Peru",
+"country": "Peru",
+"national": true
+},
+{
+"name": "Philippines",
+"country": "Philippines",
+"national": true
+},
+{
+"name": "Poland",
+"country": "Poland",
+"national": true
+},
+{
+"name": "Portugal",
+"country": "Portugal",
+"national": true
+},
+{
+"name": "Puerto Rico",
+"country": "Puerto Rico",
+"national": true
+},
+{
+"name": "Qatar",
+"country": "Qatar",
+"national": true
+},
+{
+"name": "Republic of Ireland",
+"country": "Republic of Ireland",
+"national": true
+},
+{
+"name": "Romania",
+"country": "Romania",
+"national": true
+},
+{
+"name": "Russia",
+"country": "Russia",
+"national": true
+},
+{
+"name": "Rwanda",
+"country": "Rwanda",
+"national": true
+},
+{
+"name": "Saint Kitts and Nevis",
+"country": "Saint Kitts and Nevis",
+"national": true
+},
+{
+"name": "Saint Lucia",
+"country": "Saint Lucia",
+"national": true
+},
+{
+"name": "Saint Vincent and the Grenadines",
+"country": "Saint Vincent and the Grenadines",
+"national": true
+},
+{
+"name": "Samoa",
+"country": "Samoa",
+"national": true
+},
+{
+"name": "San Marino",
+"country": "San Marino",
+"national": true
+},
+{
+"name": "Saudi Arabia",
+"country": "Saudi Arabia",
+"national": true
+},
+{
+"name": "Scotland",
+"country": "Scotland",
+"national": true
+},
+{
+"name": "Senegal",
+"country": "Senegal",
+"national": true
+},
+{
+"name": "Serbia",
+"country": "Serbia",
+"national": true
+},
+{
+"name": "Seychelles",
+"country": "Seychelles",
+"national": true
+},
+{
+"name": "Sierra Leone",
+"country": "Sierra Leone",
+"national": true
+},
+{
+"name": "Singapore",
+"country": "Singapore",
+"national": true
+},
+{
+"name": "Slovakia",
+"country": "Slovakia",
+"national": true
+},
+{
+"name": "Slovenia",
+"country": "Slovenia",
+"national": true
+},
+{
+"name": "Solomon Islands",
+"country": "Solomon Islands",
+"national": true
+},
+{
+"name": "Somalia",
+"country": "Somalia",
+"national": true
+},
+{
+"name": "South Africa",
+"country": "South Africa",
+"national": true
+},
+{
+"name": "South Korea",
+"country": "South Korea",
+"national": true
+},
+{
+"name": "South Sudan",
+"country": "South Sudan",
+"national": true
+},
+{
+"name": "Spain",
+"country": "Spain",
+"national": true
+},
+{
+"name": "Sri Lanka",
+"country": "Sri Lanka",
+"national": true
+},
+{
+"name": "Sudan",
+"country": "Sudan",
+"national": true
+},
+{
+"name": "Suriname",
+"country": "Suriname",
+"national": true
+},
+{
+"name": "Sweden",
+"country": "Sweden",
+"national": true
+},
+{
+"name": "Switzerland",
+"country": "Switzerland",
+"national": true
+},
+{
+"name": "Syria",
+"country": "Syria",
+"national": true
+},
+{
+"name": "São Tomé and Príncipe",
+"country": "São Tomé and Príncipe",
+"national": true
+},
+{
+"name": "Tahiti",
+"country": "Tahiti",
+"national": true
+},
+{
+"name": "Tajikistan",
+"country": "Tajikistan",
+"national": true
+},
+{
+"name": "Tanzania",
+"country": "Tanzania",
+"national": true
+},
+{
+"name": "Thailand",
+"country": "Thailand",
+"national": true
+},
+{
+"name": "Timor-Leste",
+"country": "Timor-Leste",
+"national": true
+},
+{
+"name": "Togo",
+"country": "Togo",
+"national": true
+},
+{
+"name": "Tonga",
+"country": "Tonga",
+"national": true
+},
+{
+"name": "Trinidad and Tobago",
+"country": "Trinidad and Tobago",
+"national": true
+},
+{
+"name": "Tunisia",
+"country": "Tunisia",
+"national": true
+},
+{
+"name": "Turkey",
+"country": "Turkey",
+"national": true
+},
+{
+"name": "Turkmenistan",
+"country": "Turkmenistan",
+"national": true
+},
+{
+"name": "Turks and Caicos Islands",
+"country": "Turks and Caicos Islands",
+"national": true
+},
+{
+"name": "U.S. Virgin Islands",
+"country": "U.S. Virgin Islands",
+"national": true
+},
+{
+"name": "Uganda",
+"country": "Uganda",
+"national": true
+},
+{
+"name": "Ukraine",
+"country": "Ukraine",
+"national": true
+},
+{
+"name": "United Arab Emirates",
+"country": "United Arab Emirates",
+"national": true
+},
+{
+"name": "United States",
+"country": "United States",
+"national": true
+},
+{
+"name": "Uruguay",
+"country": "Uruguay",
+"national": true
+},
+{
+"name": "Uzbekistan",
+"country": "Uzbekistan",
+"national": true
+},
+{
+"name": "Vanuatu",
+"country": "Vanuatu",
+"national": true
+},
+{
+"name": "Venezuela",
+"country": "Venezuela",
+"national": true
+},
+{
+"name": "Vietnam",
+"country": "Vietnam",
+"national": true
+},
+{
+"name": "Wales",
+"country": "Wales",
+"national": true
+},
+{
+"name": "Yemen",
+"country": "Yemen",
+"national": true
+},
+{
+"name": "Zambia",
+"country": "Zambia",
+"national": true
+},
+{
+"name": "Zimbabwe",
+"country": "Zimbabwe",
+"national": true
+}
+]

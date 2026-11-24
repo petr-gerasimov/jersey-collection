@@ -17,8 +17,8 @@ const wiki = (() => {
   }
   const json = async url => { const r = await fetch(url); if (!r.ok) throw new Error(`${r.status} ${url}`); return r.json(); };
 
-  // "97/98" -> "1997–98", "05/07" -> "2005–07", "2014" -> "2014"
-  const fullSeason = s => s.replace(/^(\d\d)\/(\d\d)$/, (_, a, b) => (a < 30 ? '20' : '19') + a + '–' + b);
+  // "1997-98" -> "1997–98" (Wikipedia's dash), "2014" -> "2014"
+  const fullSeason = s => s.replace(/^(\d{4})-(\d\d)$/, '$1–$2');
 
   function findSeasonPage(team, season) {
     return memo(`page:${team}:${season}`, async () => {
@@ -59,7 +59,7 @@ const wiki = (() => {
       }
       for (const table of doc.querySelectorAll('table')) {
         const heads = [...table.querySelectorAll('th')].map(text);
-        const num = heads.indexOf('No.'), player = heads.indexOf('Player');
+        const num = heads.indexOf('No.'), player = heads.indexOf('Player') >= 0 ? heads.indexOf('Player') : heads.indexOf('Name');
         if (num < 0 || player < 0) continue;
         for (const row of table.querySelectorAll('tr')) {
           const cells = row.querySelectorAll('td');

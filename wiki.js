@@ -20,14 +20,15 @@ const wiki = (() => {
 
   const text = el => el.textContent.replace(/\[\d+\]/g, '').replace(/\s+/g, ' ').trim();
 
-  // {title, url, competitions: [{name, result}], topScorer, squad: {number: name}}
+  // {title, url, competitions: [{name, result}], topScorer, squad: {number: name}, kits: {home: html, away: html, ...}}
+  // kits are the infobox's layered drawings from Wikimedia Commons: the 100×135 px block above each "… colours" label
   function seasonInfo(title) {
     return memo('season:' + title, async () => {
       const r = await fetch(`${WP}/api/rest_v1/page/html/${encodeURIComponent(title.replace(/ /g, '_'))}`);
       if (!r.ok) throw new Error(`${r.status} ${title}`);
       const doc = new DOMParser().parseFromString(await r.text(), 'text/html');
       doc.querySelectorAll('br').forEach(b => b.replaceWith(' '));
-      const info = { title, url: `${WP}/wiki/${encodeURIComponent(title.replace(/ /g, '_'))}`, competitions: [], topScorer: '', squad: {} };
+      const info = { title, url: `${WP}/wiki/${encodeURIComponent(title.replace(/ /g, '_'))}`, competitions: [], topScorer: '', squad: {}, kits: {} };
       const skip = /chairman|owner|president|manager|coach|stadium|attendance|colours|biggest|prev|next|←|→/i;
       for (const row of doc.querySelectorAll('table.infobox tr')) {
         const th = row.querySelector('th'), td = row.querySelector('td');
@@ -35,6 +36,14 @@ const wiki = (() => {
         const name = text(th), result = text(td);
         if (/top goalscorer/i.test(name)) info.topScorer = result;
         else if (!skip.test(name) && result) info.competitions.push({ name, result });
+      }
+      for (const label of doc.querySelectorAll('table.infobox td')) {
+        const m = text(label).match(/^(\w+) colours$/i);
+        if (!m) continue;
+        // the drawing sits in the label's own cell, or in the cell above it on older pages
+        const row = label.parentElement, i = [...row.children].indexOf(label);
+        const block = (label.querySelector('div[style*="height: 135px"]') || row.previousElementSibling?.children[i])?.closest?.('td')?.querySelector('div[style*="height: 135px"]');
+        if (block) info.kits[m[1].toLowerCase()] = block.outerHTML.replace(/(="|, )\/\//g, '$1https://');
       }
       for (const table of doc.querySelectorAll('table')) {
         const heads = [...table.querySelectorAll('th')].map(text);

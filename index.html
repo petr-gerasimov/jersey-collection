@@ -10,7 +10,9 @@
   input { font-size: 16px; padding: 8px; flex: 1; min-width: 160px; }
   #kits { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
   figure { margin: 0; }
-  img, .nophoto { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; background: #eee; border-radius: 8px; display: block; }
+  figure > img, .nophoto { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; background: #eee; border-radius: 8px; display: block; }
+  .nophoto { display: grid; place-items: center; overflow: hidden; }
+  .nophoto > div { zoom: 1.5; }
   figcaption { margin-top: 4px; }
   small { color: #666; }
   .description { margin: 6px 0 2px; font-size: 14px; line-height: 1.35; }
@@ -73,6 +75,8 @@ async function showSeason(team, season) {
     const parts = info.competitions.map(c => `<b>${c.name}</b> ${c.result}`);
     if (info.topScorer) parts.push(`<b>Top scorer</b> ${info.topScorer}`);
     seasonBox.innerHTML = parts.join(' · ') + ` · <a href="${info.url}" target="_blank" rel="noopener">Wikipedia</a>`;
+    // a card without a photo shows Wikipedia's drawing of that kit
+    for (const box of grid.querySelectorAll('.nophoto[data-kit]')) box.innerHTML = info.kits[box.dataset.kit] || '';
   } catch (e) { seasonBox.textContent = 'Wikipedia did not answer: ' + e.message; }
 }
 
@@ -84,7 +88,7 @@ function render() {
   empty.hidden = found.length > 0;
   grid.innerHTML = found.map(k => `
     <figure class="${k.status}">
-      ${k.photo ? `<img src="photos/${k.photo}" alt="${k.team} ${k.season || ''} ${k.kit || ''}" loading="lazy">` : '<div class="nophoto"></div>'}
+      ${k.photo ? `<img src="photos/${k.photo}" alt="${k.team} ${k.season || ''} ${k.kit || ''}" loading="lazy">` : `<div class="nophoto" data-kit="${k.kit || ''}"></div>`}
       <figcaption>
         <b>${k.team}</b> ${k.season || ''} ${k.kit || ''}${k.status === 'yes' ? '' : ' · ' + k.status}<br>
         <small>${[k.brand, k.version, k.size, k.number && k.player ? `${k.number} ${k.player}` : k.number || k.player, k.comment].filter(Boolean).join(' · ')}</small>

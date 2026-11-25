@@ -12,7 +12,7 @@
 <body>
 <header>
   <a href="index.html"><img src="logo.png" alt="Eleven Jersey" class="logo"></a>
-  <a href="add.html" class="button">Add jersey</a>
+  <span><button id="sync" class="button" hidden>Sync</button> <a href="add.html" class="button">Add jersey</a></span>
 </header>
 <form id="search">
   <input name="team" list="teams" placeholder="Club or national team" autocomplete="off">
@@ -32,6 +32,7 @@
 </dialog>
 
 <script src="wiki.js"></script>
+<script src="queue.js"></script>
 <script>
 const form = document.getElementById('search');
 const grid = document.getElementById('kits');
@@ -93,7 +94,7 @@ const seen = new IntersectionObserver(entries => {
 }, { rootMargin: '200px' });
 
 const picture = (k, i) => k.photo
-  ? `<img src="photos/${esc(k.photo)}" alt="${esc(k.team)} ${esc(k.season || '')} ${esc(k.kit || '')}" loading="lazy">`
+  ? `<img src="${k.photoData || 'photos/' + esc(k.photo)}" alt="${esc(k.team)} ${esc(k.season || '')} ${esc(k.kit || '')}" loading="lazy">`
   : `<div class="nophoto" data-i="${i}"></div>`;
 const line = k => [k.brand, k.version, k.size, k.number && k.player ? `${k.number} ${k.player}` : k.number || k.player, k.comment].filter(Boolean).map(esc).join(' · ');
 
@@ -148,12 +149,20 @@ function open(i) {
     .then(info => { if (info && detail.open) detail.querySelector('.season').innerHTML = seasonHtml(info); }).catch(() => {});
 }
 
-fetch('kits.json').then(r => r.json()).then(data => {
-  kits = data;
+let published = [];
+function load() {
+  kits = [...published, ...queue.extra(published)];
   fill('teams', kits.map(k => k.team));
   fill('seasons', kits.map(k => k.season).filter(Boolean));
   render();
+}
+fetch('kits.json').then(r => r.json()).then(data => {
+  published = data;
+  load();
+  // with a token already in this browser, whatever waits goes to GitHub on its own
+  if (queue.token() && queue.pending().length) queue.sync().then(showSync).catch(() => {});
 });
+const showSync = queue.button(document.getElementById('sync'), load);
 form.addEventListener('input', render);
 form.addEventListener('submit', e => e.preventDefault());
 grid.addEventListener('click', e => { const f = e.target.closest('figure'); if (f) open(f.dataset.i); });

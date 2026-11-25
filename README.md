@@ -6,11 +6,13 @@ the season's results from Wikipedia, and a link to all kits of that season on Fo
 - `index.html` — the collection in sections per team, most kits first, newest season first; a card opens the kit's details. A card
   without a photo shows Wikipedia's drawing of that kit from the club's season page. No build step.
 - `style.css` — the look, in the logo's cream and green. `logo.png`, `favicon.png`, `favicon-32.png` — the brand.
-- `add.html` — the form that adds a kit. Country and brand are filled from the collection, a new club's
-  country from Wikidata, the player from the squad on the club's Wikipedia season page. Required: club,
-  season, kit, status. It saves straight to this repository through the GitHub API with a fine-grained
-  token (Contents: read and write) kept in the browser's local storage; without a token it shows the
-  JSON to paste by hand.
+- `add.html` — the form that adds a kit. Country and brand are filled from the teams list, the collection
+  or Wikipedia, the player from the squad on the club's Wikipedia season page. Required: club, season,
+  kit, status. A new kit waits in the browser's local storage and shows in the collection on that device
+  at once; the photo is shrunk to 1200 px JPEG first.
+- `queue.js` — that queue and its Sync: the header's Sync button sends everything waiting to this repository
+  in one commit through the GitHub API, with a fine-grained token (Contents: read and write) kept in the
+  browser; when a token is already there, the collection page syncs on its own when opened.
 - `wiki.js` — the Wikipedia and Wikidata lookups, called from the browser (both APIs allow it); results are
   kept in the browser's local storage for 30 days, so a season page is fetched once.
 - `kits.json` — the collection, one object per kit: `status` (`yes` owned, `bought` on its way,

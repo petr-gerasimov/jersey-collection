@@ -24,7 +24,7 @@
 <body>
 <header>
   <a href="index.html"><img src="logo.png" alt="Eleven Jersey" class="logo"></a>
-  <a href="index.html" class="button">Collection</a>
+  <span><button id="sync" class="button" hidden>Sync</button> <a href="index.html" class="button">Collection</a></span>
 </header>
 <h1>Add a jersey</h1>
 <form id="add">
@@ -60,13 +60,13 @@
   <label>Notes<input name="comment"></label>
   <label>Photo<input name="photo" type="file" accept="image/*"></label>
   <datalist id="teams"></datalist><datalist id="countries"></datalist><datalist id="seasons"></datalist><datalist id="brands"></datalist>
-  <button type="submit" class="button">Save to GitHub</button>
+  <button type="submit" class="button">Add to collection</button>
   <button type="button" id="forget" class="button" hidden>Forget token</button>
 </form>
 <div id="result"></div>
 <script src="wiki.js"></script>
+<script src="queue.js"></script>
 <script>
-const REPO = 'petr-gerasimov/jersey-collection';
 const form = document.getElementById('add');
 const result = document.getElementById('result');
 const countryHint = document.getElementById('countryHint');
@@ -88,7 +88,8 @@ Promise.all([fetch('kits.json').then(r => r.json()), fetch('teams.json').then(r 
   fill('brands', uniq(kits.map(x => x.brand)));
   seasonList();
 });
-forget.hidden = !localStorage.getItem('gh_token');
+forget.hidden = !queue.token();
+const showSync = queue.button(document.getElementById('sync'));
 
 const known = name => teams.find(t => t.name.toLowerCase() === name.toLowerCase());
 const isNational = name => !!known(name)?.national;
@@ -171,13 +172,18 @@ form.season.addEventListener('change', () => { autofill(); checkSeason(); player
 form.season.addEventListener('input', () => form.season.setCustomValidity(''));
 form.number.addEventListener('input', () => soon(playerByNumber));
 
-const b64 = bytes => btoa(String.fromCharCode(...bytes));
-const utf8 = s => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\n/g, '')), c => c.charCodeAt(0)));
-async function gh(path, opts = {}) {
-  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
-    ...opts, headers: { Authorization: `Bearer ${localStorage.getItem('gh_token')}`, Accept: 'application/vnd.github+json', ...(opts.headers || {}) } });
-  if (!r.ok) throw new Error(`GitHub ${r.status} on ${path}: ${(await r.json()).message || ''}`);
-  return r.json();
+// A photo is shrunk to 1200 px and JPEG before it is stored, so it fits the browser's storage and the repository.
+function shrink(file) {
+  return new Promise((res, rej) => {
+    const img = new Image();
+    img.onload = () => {
+      const k = Math.min(1, 1200 / Math.max(img.width, img.height));
+      const c = document.createElement('canvas'); c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(img.src); res(c.toDataURL('image/jpeg', 0.82));
+    };
+    img.onerror = () => rej(new Error('cannot read the photo')); img.src = URL.createObjectURL(file);
+  });
 }
 
 function record() {
@@ -186,41 +192,24 @@ function record() {
     const v = (f.get(key) || '').trim();
     if (v) kit[key] = v;
   }
-  const photo = form.photo.files[0];
-  if (photo) kit.photo = [slug(kit.team), kit.season, kit.kit, Date.now().toString(36)].join('-') + '.' + (photo.name.split('.').pop() || 'jpg').toLowerCase();
+  if (form.photo.files[0]) kit.photo = [slug(kit.team), kit.season, kit.kit, Date.now().toString(36)].join('-') + '.jpg';
   return kit;
 }
 
 form.addEventListener('submit', async e => {
   e.preventDefault();
   if (!checkSeason()) { form.season.reportValidity(); return; }
-  const kit = record();
-  if (!localStorage.getItem('gh_token')) {
-    const t = prompt('GitHub token with write access to the repository (fine-grained, Contents: read and write). It stays in this browser only. Leave empty to get the JSON to paste by hand.');
-    if (t) { localStorage.setItem('gh_token', t.trim()); forget.hidden = false; }
-  }
-  if (!localStorage.getItem('gh_token')) {
-    result.innerHTML = `Add this to kits.json${kit.photo ? ` and put the photo in photos/${esc(kit.photo)}` : ''}:<br><textarea readonly>${esc(JSON.stringify(kit, null, 1))}</textarea>`;
-    return;
-  }
-  result.textContent = 'Saving…';
   try {
-    const photo = form.photo.files[0];
-    if (photo) {
-      const bytes = new Uint8Array(await photo.arrayBuffer());
-      await gh(`photos/${kit.photo}`, { method: 'PUT', body: JSON.stringify({ message: `Photo: ${kit.team} ${kit.season} ${kit.kit}`, content: b64(bytes) }) });
-    }
-    const cur = await gh('kits.json', { headers: { 'If-None-Match': '' } });
-    const all = JSON.parse(utf8(cur.content));
-    all.push(kit);
-    const body = new TextEncoder().encode(JSON.stringify(all, null, 1));
-    await gh('kits.json', { method: 'PUT', body: JSON.stringify({ message: `Add ${kit.team} ${kit.season} ${kit.kit}`, content: b64(body), sha: cur.sha }) });
-    kits = all;
-    result.innerHTML = `Saved: <b>${esc(kit.team)} ${esc(kit.season)} ${esc(kit.kit)}</b>. The site updates in about a minute. <a href="index.html">Collection</a>`;
-    form.reset(); countryHint.textContent = playerHint.textContent = brandHint.textContent = ''; delete brandHint.dataset.auto; seasonList();
-  } catch (err) { result.textContent = 'Not saved. ' + err.message; }
+    const kit = record();
+    const photoData = form.photo.files[0] ? await shrink(form.photo.files[0]) : null;
+    queue.add(kit, photoData);
+    kits.push(kit);
+    const n = queue.pending().length;
+    result.innerHTML = `Added: <b>${esc(kit.team)} ${esc(kit.season)} ${esc(kit.kit)}</b>. ${n} waiting for sync, it is already in the <a href="index.html">collection</a> on this device.`;
+    form.reset(); countryHint.textContent = playerHint.textContent = brandHint.textContent = ''; delete brandHint.dataset.auto; seasonList(); showSync();
+  } catch (err) { result.textContent = 'Not added. ' + err.message; }
 });
-forget.addEventListener('click', () => { localStorage.removeItem('gh_token'); forget.hidden = true; });
+forget.addEventListener('click', () => { queue.forget(); forget.hidden = true; });
 </script>
 </body>
 </html>
